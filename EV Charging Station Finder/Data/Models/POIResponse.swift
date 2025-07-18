@@ -116,4 +116,37 @@ struct POIResponse : Codable {
 		submissionStatusTypeID = try values.decodeIfPresent(Int.self, forKey: .submissionStatusTypeID)
 	}
 
+	init() {
+		self.dataProvider = nil
+		self.operatorInfo = nil
+		self.usageType = nil
+		self.statusType = nil
+		self.submissionStatus = nil
+		self.userComments = nil
+		self.percentageSimilarity = nil
+		self.mediaItems = nil
+		self.isRecentlyVerified = nil
+		self.dateLastVerified = nil
+		self.iD = nil
+		self.uUID = nil
+		self.parentChargePointID = nil
+		self.dataProviderID = nil
+		self.dataProvidersReference = nil
+		self.operatorID = nil
+		self.operatorsReference = nil
+		self.usageTypeID = nil
+		self.usageCost = nil
+		self.addressInfo = nil
+		self.connections = nil
+		self.numberOfPoints = nil
+		self.generalComments = nil
+		self.datePlanned = nil
+		self.dateLastConfirmed = nil
+		self.statusTypeID = nil
+		self.dateLastStatusUpdate = nil
+		self.metadataValues = nil
+		self.dataQualityLevel = nil
+		self.dateCreated = nil
+		self.submissionStatusTypeID = nil
+	}
 }

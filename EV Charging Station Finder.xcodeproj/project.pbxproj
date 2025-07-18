@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D957B49E2E2AAF4C002F4A4D /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */; };
+		D957B4A22E2AB9C1002F4A4D /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = D957B4A12E2AB9C1002F4A4D /* Secret.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D957B39C2E29DC75002F4A4D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		D957B38C2E29DC74002F4A4D /* EV Charging Station Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EV Charging Station Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D957B39B2E29DC75002F4A4D /* EV Charging Station FinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EV Charging Station FinderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D957B3A52E29DC75002F4A4D /* EV Charging Station FinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EV Charging Station FinderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		D957B4A12E2AB9C1002F4A4D /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +82,8 @@
 		D957B3832E29DC74002F4A4D = {
 			isa = PBXGroup;
 			children = (
+				D957B4A12E2AB9C1002F4A4D /* Secret.plist */,
+				D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */,
 				D957B38E2E29DC74002F4A4D /* EV Charging Station Finder */,
 				D957B39E2E29DC75002F4A4D /* EV Charging Station FinderTests */,
 				D957B3A82E29DC75002F4A4D /* EV Charging Station FinderUITests */,
@@ -212,6 +221,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D957B49E2E2AAF4C002F4A4D /* Secrets.xcconfig in Resources */,
+				D957B4A22E2AB9C1002F4A4D /* Secret.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +282,7 @@
 /* Begin XCBuildConfiguration section */
 		D957B3AD2E29DC75002F4A4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -335,6 +347,7 @@
 		};
 		D957B3AE2E29DC75002F4A4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -392,6 +405,7 @@
 		};
 		D957B3B02E29DC75002F4A4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -400,6 +414,7 @@
 				DEVELOPMENT_TEAM = RH386Z3CQP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Secret.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -420,6 +435,7 @@
 		};
 		D957B3B12E29DC75002F4A4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -428,6 +444,7 @@
 				DEVELOPMENT_TEAM = RH386Z3CQP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Secret.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,6 +465,7 @@
 		};
 		D957B3B32E29DC75002F4A4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -467,6 +485,7 @@
 		};
 		D957B3B42E29DC75002F4A4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -486,6 +505,7 @@
 		};
 		D957B3B62E29DC75002F4A4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -503,6 +523,7 @@
 		};
 		D957B3B72E29DC75002F4A4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D957B49D2E2AAF4C002F4A4D /* Secrets.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
