@@ -25,20 +25,20 @@ Both screens are designed to follow **standard iOS user interface guidelines**, 
 
 *   **Minimum iOS Version**: iOS 14.
 *   **Language**: Developed entirely in **Swift**.
-*   **UI Framework**: Built using **UIKit, SwiftUI, or a combination** of both.
+*   **UI Framework**: Built using **SwiftUI**.
 *   **UI Construction**: The user interface is **constructed entirely in code**; no Interface Builder or storyboards are used.
-*   **Architecture**: Follows an **MVVM/MVP architecture** to promote modularity and testability.
+*   **Architecture**: Follows an **MVVM architecture** to promote modularity and testability.
 *   **Network Integration**: **URLSession** is used for all REST API integration with OpenChargeMap.
 *   **Error Handling**: Robust error handling is implemented for network issues and empty data scenarios.
 *   **Unit Testing**:
-    *   Unit tests are written using **XCTest or SwiftTesting**.
+    *   Unit tests are written using **SwiftTesting**.
     *   **View models and networking services** are covered by unit tests.
-    *   **Dependency injection** is utilized to enable effective mocking for testing purposes. Approximately 1.5-2 hours were allocated for developing meaningful tests.
+    *   **Dependency injection** is utilized to enable effective mocking for testing purposes.
 *   **Dependency Injection (DI)**:
     *   **Constructor-based injection** is used throughout the application.
     *   Networking components are **abstracted behind protocols** to facilitate testing and reduce coupling.
     *   Emphasis is placed on **avoiding singletons or tightly coupled code**.
-*   **No Third-Party Frameworks Required**: The solution does not require any third-party frameworks. If any were deemed necessary (and none were in this case), their usage would be documented and justified.
+*   **No Third-Party Frameworks Required**: The solution does not require any third-party frameworks.
 
 ## Important Development Notes
 
