@@ -1,0 +1,46 @@
+# EV Charging Station Finder
+
+## Overview
+
+This project is a take-home coding challenge to create an iOS application that **displays nearby electric vehicle (EV) charging stations**. The application utilizes the **OpenChargeMap API** (https://openchargemap.org/site/develop/api) to fetch station data.
+
+The primary goal of this exercise is to evaluate the ability to build a **modular and testable iOS application** using an **MVVM/MVP architecture** and adhering to good engineering practices. The project is designed to be a **complete but not necessarily shippable application**, with a suggested time limit of **no more than 10 hours total** (over 2-3 days).
+
+## Key Features
+
+The application is built with the following core features:
+
+*   **Station List Screen**:
+    *   Displays a list of nearby EV charging stations.
+    *   Each station cell shows its **name, address, and location information**.
+    *   Tapping on a cell navigates to a detailed view of the station.
+
+*   **Station Detail Screen**:
+    *   Provides **detailed information** about the selected charging station, including **connector types, full address, and access comments**.
+    *   **Optional**: Can display the station's location using **MapKit**.
+
+Both screens are designed to follow **standard iOS user interface guidelines**, with choices for fonts, layout, and animations left to the developer's judgment.
+
+## Technical Implementation Highlights
+
+*   **Minimum iOS Version**: iOS 14.
+*   **Language**: Developed entirely in **Swift**.
+*   **UI Framework**: Built using **UIKit, SwiftUI, or a combination** of both.
+*   **UI Construction**: The user interface is **constructed entirely in code**; no Interface Builder or storyboards are used.
+*   **Architecture**: Follows an **MVVM/MVP architecture** to promote modularity and testability.
+*   **Network Integration**: **URLSession** is used for all REST API integration with OpenChargeMap.
+*   **Error Handling**: Robust error handling is implemented for network issues and empty data scenarios.
+*   **Unit Testing**:
+    *   Unit tests are written using **XCTest or SwiftTesting**.
+    *   **View models and networking services** are covered by unit tests.
+    *   **Dependency injection** is utilized to enable effective mocking for testing purposes. Approximately 1.5-2 hours were allocated for developing meaningful tests.
+*   **Dependency Injection (DI)**:
+    *   **Constructor-based injection** is used throughout the application.
+    *   Networking components are **abstracted behind protocols** to facilitate testing and reduce coupling.
+    *   Emphasis is placed on **avoiding singletons or tightly coupled code**.
+*   **No Third-Party Frameworks Required**: The solution does not require any third-party frameworks. If any were deemed necessary (and none were in this case), their usage would be documented and justified.
+
+## Important Development Notes
+
+*   **Engineering Decision Journal**: A **DECISION_LOG.md** file (or integrated into this README) is provided, detailing architectural decisions and areas of testing focus. It also describes how AI coding tools/assistants (if any) were integrated into the workflow.
+*   **Git Commit History**: The project's Git history reflects **regular, descriptive commits**, mirroring a typical day-to-day development process. This adheres to the requirement of not having a single large commit or no commit history, which would result in automatic disqualification.
