@@ -19,17 +19,15 @@ struct CurrentType : Codable {
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case description = "Description"
 		case iD = "ID"
 		case title = "Title"
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		description = try values.decodeIfPresent(String.self, forKey: .description)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		description = try container.decodeIfPresent(String.self, forKey: .description)
+		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }

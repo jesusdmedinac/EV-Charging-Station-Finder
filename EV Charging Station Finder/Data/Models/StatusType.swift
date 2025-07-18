@@ -20,7 +20,6 @@ struct StatusType : Codable {
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case isOperational = "IsOperational"
 		case isUserSelectable = "IsUserSelectable"
 		case iD = "ID"
@@ -28,11 +27,10 @@ struct StatusType : Codable {
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		isOperational = try values.decodeIfPresent(Bool.self, forKey: .isOperational)
-		isUserSelectable = try values.decodeIfPresent(Bool.self, forKey: .isUserSelectable)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		isOperational = try container.decodeIfPresent(Bool.self, forKey: .isOperational)
+		isUserSelectable = try container.decodeIfPresent(Bool.self, forKey: .isUserSelectable)
+		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }

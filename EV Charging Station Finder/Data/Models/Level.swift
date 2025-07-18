@@ -16,23 +16,21 @@ import Foundation
 struct Level : Codable {
 	let comments : String?
 	let isFastChargeCapable : Bool?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case comments = "Comments"
 		case isFastChargeCapable = "IsFastChargeCapable"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		comments = try values.decodeIfPresent(String.self, forKey: .comments)
-		isFastChargeCapable = try values.decodeIfPresent(Bool.self, forKey: .isFastChargeCapable)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		comments = try container.decodeIfPresent(String.self, forKey: .comments)
+		isFastChargeCapable = try container.decodeIfPresent(Bool.self, forKey: .isFastChargeCapable)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }

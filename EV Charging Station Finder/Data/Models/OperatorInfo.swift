@@ -28,7 +28,6 @@ struct OperatorInfo : Codable {
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case websiteURL = "WebsiteURL"
 		case comments = "Comments"
 		case phonePrimaryContact = "PhonePrimaryContact"
@@ -44,19 +43,18 @@ struct OperatorInfo : Codable {
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		websiteURL = try values.decodeIfPresent(String.self, forKey: .websiteURL)
-		comments = try values.decodeIfPresent(String.self, forKey: .comments)
-		phonePrimaryContact = try values.decodeIfPresent(String.self, forKey: .phonePrimaryContact)
-		phoneSecondaryContact = try values.decodeIfPresent(String.self, forKey: .phoneSecondaryContact)
-		isPrivateIndividual = try values.decodeIfPresent(Bool.self, forKey: .isPrivateIndividual)
-		addressInfo = try values.decodeIfPresent(String.self, forKey: .addressInfo)
-		bookingURL = try values.decodeIfPresent(String.self, forKey: .bookingURL)
-		contactEmail = try values.decodeIfPresent(String.self, forKey: .contactEmail)
-		faultReportEmail = try values.decodeIfPresent(String.self, forKey: .faultReportEmail)
-		isRestrictedEdit = try values.decodeIfPresent(Bool.self, forKey: .isRestrictedEdit)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		websiteURL = try container.decodeIfPresent(String.self, forKey: .websiteURL)
+		comments = try container.decodeIfPresent(String.self, forKey: .comments)
+		phonePrimaryContact = try container.decodeIfPresent(String.self, forKey: .phonePrimaryContact)
+		phoneSecondaryContact = try container.decodeIfPresent(String.self, forKey: .phoneSecondaryContact)
+		isPrivateIndividual = try container.decodeIfPresent(Bool.self, forKey: .isPrivateIndividual)
+		addressInfo = try container.decodeIfPresent(String.self, forKey: .addressInfo)
+		bookingURL = try container.decodeIfPresent(String.self, forKey: .bookingURL)
+		contactEmail = try container.decodeIfPresent(String.self, forKey: .contactEmail)
+		faultReportEmail = try container.decodeIfPresent(String.self, forKey: .faultReportEmail)
+		isRestrictedEdit = try container.decodeIfPresent(Bool.self, forKey: .isRestrictedEdit)
+		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }
