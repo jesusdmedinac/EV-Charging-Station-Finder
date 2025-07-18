@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
-struct EV_Charging_Station_FinderApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+struct EVChargingStationFinderApp: App {
+  var body: some Scene {
+    WindowGroup {
+      StationsListScreen()
     }
+  }
 }
