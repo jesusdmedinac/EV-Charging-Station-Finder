@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct EVChargingStationFinderApp: App {
+struct EVChargingStationFinderApp: App {  
   var body: some Scene {
     WindowGroup {
       StationsListScreen()
