@@ -14,15 +14,13 @@ struct UIEVChargingStation : Identifiable {
 }
 
 struct StationsListScreen : View {
+  private let container = DIContainer.shared
+  
   @State private var data: [UIEVChargingStation] = []
-  private let evChargingStationsRepositoryImpl: EVChargingStationsRepositoryImpl
+  private let evChargingStationsRepository: EVChargingStationsRepository
   
   init() {
-    self.evChargingStationsRepositoryImpl = EVChargingStationsRepositoryImpl(
-      evChargingStationsLocalDataSource: EVChargingStationsInMemoryDataSource(),
-      evChargingStationsRemoteDataSource: EVChargingStationsAPIService(),
-      evChargingStationMapper: EVChargingStationMapper()
-    )
+    self.evChargingStationsRepository = container.resolve(EVChargingStationsRepository.self)
   }
   
   var body: some View {
@@ -39,7 +37,7 @@ struct StationsListScreen : View {
   private func callFetch() {
     Task {
       do {
-        let data = try await self.evChargingStationsRepositoryImpl.fetchStations(latitude: 0.0, longitude: 0.0, distance: 10)
+        let data = try await self.evChargingStationsRepository.fetchStations(latitude: 0.0, longitude: 0.0, distance: 10)
         self.data = data.map({ UIEVChargingStation(name: $0.name) })
       } catch {
         switch error {
