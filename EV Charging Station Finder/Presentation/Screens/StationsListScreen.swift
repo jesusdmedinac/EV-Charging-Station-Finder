@@ -15,10 +15,13 @@ struct UIEVChargingStation : Identifiable {
 
 struct StationsListScreen : View {
   @State private var data: [UIEVChargingStation] = []
-  private let evChargingStationsAPIService: EVChargingStationsAPIService
+  private let evChargingStationsRepositoryImpl: EVChargingStationsRepositoryImpl
   
   init() {
-    self.evChargingStationsAPIService = EVChargingStationsAPIService()
+    self.evChargingStationsRepositoryImpl = EVChargingStationsRepositoryImpl(
+      evChargingStationsLocalDataSource: EVChargingStationsInMemoryDataSource(),
+      evChargingStationsRemoteDataSource: EVChargingStationsAPIService()
+    )
   }
   
   var body: some View {
@@ -35,8 +38,8 @@ struct StationsListScreen : View {
   private func callFetch() {
     Task {
       do {
-        let data = try await self.evChargingStationsAPIService.fetchEVChargingStations(latitude: 0.0, longitude: 0.0, distance: 10)
-        self.data = data.map({ UIEVChargingStation(name: $0.addressInfo?.title ?? "") })
+        let data = try await self.evChargingStationsRepositoryImpl.fetchStations(latitude: 0.0, longitude: 0.0, distance: 10)
+        self.data = data.map({ UIEVChargingStation(name: $0.name) })
       } catch {
         switch error {
           case EVChargingAPIError.missingAPIKey:

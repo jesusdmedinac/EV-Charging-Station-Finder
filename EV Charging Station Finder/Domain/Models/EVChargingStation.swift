@@ -8,5 +8,10 @@
 import Foundation
 
 struct EVChargingStation {
-   // TODO: Not yet implemented
+  let id: String
+  let name: String
+  let address: String
+  let location: LatLong
+  let connectorTypes: [ConnectorType]
+  let accessComments: String
 }
