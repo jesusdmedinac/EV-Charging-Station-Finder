@@ -51,6 +51,16 @@ final class DIContainer {
         evChargingStationMapper: evChargingStationMapper
       )
     }.inObjectScope(.container)
+
+    container.register(GetEVChargingStationsUseCase.self) { resolver in
+      let repository = resolver.resolve(EVChargingStationsRepository.self)!
+      return GetEVChargingStationsUseCaseImpl(repository: repository)
+    }.inObjectScope(.container)
+    
+    container.register(GetEVChargingStationsByIdUseCase.self) { resolver in
+      let repository = resolver.resolve(EVChargingStationsRepository.self)!
+      return GetEVChargingStationsByIdUseCaseImpl(repository: repository)
+    }.inObjectScope(.container)
   }
     
   func resolve<T>(_ type: T.Type) -> T {

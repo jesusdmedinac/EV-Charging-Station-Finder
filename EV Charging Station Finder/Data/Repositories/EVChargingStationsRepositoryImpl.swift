@@ -60,4 +60,8 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
   func saveStations(_ stations: [EVChargingStation]) {
     evChargingStationsLocalDataSource.saveEVChargingStations(stations)
   }
+  
+  func fetchStation(id: String) async throws -> EVChargingStation? {
+    evChargingStationsLocalDataSource.getEVChargingStation(id: id)
+  }
 }
