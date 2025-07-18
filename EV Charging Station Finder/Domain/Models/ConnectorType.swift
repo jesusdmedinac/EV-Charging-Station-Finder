@@ -8,5 +8,6 @@
 import Foundation
 
 struct ConnectorType {
-  // TODO: Not yet implemented
+  let id: String
+  let name: String
 }

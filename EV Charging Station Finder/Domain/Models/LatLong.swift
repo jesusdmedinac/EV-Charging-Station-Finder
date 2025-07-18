@@ -8,5 +8,6 @@
 import Foundation
 
 struct LatLong {
-  // TODO: Not yet implemented
+  let latitude: Double
+  let longitude: Double
 }
