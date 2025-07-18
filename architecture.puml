@@ -1,0 +1,98 @@
+@startuml EV Charging Station Finder Architecture
+
+' Title and description
+title EV Charging Station Finder - High Level Architecture
+
+' Domain Layer
+component DomainLayer {
+    ' Repository interface
+    component Repositories {
+        interface EVChargingStationsRepository {
+            getEVChargingStations(): List<EVChargingStation>
+            getEVChargingStationById(id: String): EVChargingStation
+        }
+    }
+
+    ' Models
+    component Models {
+        class EVChargingStation {
+            name: String
+            address: String
+            location: LatLong
+            connectorTypes: [ConnectorType]
+            accessComments: String
+        }
+        class ConnectorType {
+            id: String
+            name: String
+        }
+        class LatLong {
+            latitude: Double
+            longitude: Double
+        }
+    }
+
+    ' Use cases
+    component UseCases {
+        interface GetEVChargingStationsUseCase {
+            execute(): List<EVChargingStation>
+        }
+        interface GetEVChargingStationByIdUseCase {
+            execute(id: String): EVChargingStation
+        }
+
+        ' Use cases implementations
+        class GetEVChargingStationsUseCaseImpl implements GetEVChargingStationsUseCase
+        class GetEVChargingStationByIdUseCaseImpl implements GetEVChargingStationByIdUseCase
+    }
+
+    ' Use cases dependencies
+    GetEVChargingStationsUseCaseImpl ..> EVChargingStationsRepository : Depends on
+    GetEVChargingStationByIdUseCaseImpl ..> EVChargingStationsRepository : Depends on
+}
+
+' Data Layer
+component DataLayer {
+    ' Data sources interfaces
+    component DataSources {
+        interface EVChargingStationsRemoteDataSource
+        interface EVChargingStationsLocalDataSource
+
+        ' Data sources implementations
+        class EVChargingStationsAPIService implements EVChargingStationsRemoteDataSource
+        class EVChargingStationsInMemoryDataSource implements EVChargingStationsLocalDataSource
+    }
+
+    ' Repository implementation
+    component Repositories {
+        class EVChargingStationsRepositoryImpl implements EVChargingStationsRepository
+    }
+
+    EVChargingStationsRepositoryImpl ..> EVChargingStationsRemoteDataSource : Depends on
+    EVChargingStationsRepositoryImpl ..> EVChargingStationsLocalDataSource : Depends on
+}
+
+' Presentation Layer
+component PresentationLayer {
+    ' ViewModels
+    component ViewModels {
+        class StationsListScreenViewModel
+        class StationDetailScreenViewModel
+    }
+
+    ' ViewModels dependencies
+    StationsListScreenViewModel ..> GetEVChargingStationsUseCase : Depends on
+    StationDetailScreenViewModel ..> GetEVChargingStationByIdUseCase : Depends on
+
+    ' Screens
+    component Screens {
+        class StationsListScreen
+        class StationDetailScreen
+    }
+
+    ' Screens dependencies
+    StationsListScreen ..> StationsListScreenViewModel : Depends on
+    StationDetailScreen ..> StationDetailScreenViewModel : Depends on
+}
+
+@enduml
