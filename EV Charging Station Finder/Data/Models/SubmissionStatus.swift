@@ -15,21 +15,19 @@ import Foundation
 
 struct SubmissionStatus : Codable {
 	let isLive : Bool?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case isLive = "IsLive"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		isLive = try values.decodeIfPresent(Bool.self, forKey: .isLive)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		isLive = try container.decodeIfPresent(Bool.self, forKey: .isLive)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }

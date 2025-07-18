@@ -20,7 +20,6 @@ struct Country : Codable {
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case iSOCode = "ISOCode"
 		case continentCode = "ContinentCode"
 		case iD = "ID"
@@ -28,11 +27,10 @@ struct Country : Codable {
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		iSOCode = try values.decodeIfPresent(String.self, forKey: .iSOCode)
-		continentCode = try values.decodeIfPresent(String.self, forKey: .continentCode)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		iSOCode = try container.decodeIfPresent(String.self, forKey: .iSOCode)
+		continentCode = try container.decodeIfPresent(String.self, forKey: .continentCode)
+		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }

@@ -26,7 +26,6 @@ struct DataProvider : Codable {
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case websiteURL = "WebsiteURL"
 		case comments = "Comments"
 		case dataProviderStatusType = "DataProviderStatusType"
@@ -40,17 +39,16 @@ struct DataProvider : Codable {
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		websiteURL = try values.decodeIfPresent(String.self, forKey: .websiteURL)
-		comments = try values.decodeIfPresent(String.self, forKey: .comments)
-		dataProviderStatusType = try values.decodeIfPresent(DataProviderStatusType.self, forKey: .dataProviderStatusType)
-		isRestrictedEdit = try values.decodeIfPresent(Bool.self, forKey: .isRestrictedEdit)
-		isOpenDataLicensed = try values.decodeIfPresent(Bool.self, forKey: .isOpenDataLicensed)
-		isApprovedImport = try values.decodeIfPresent(Bool.self, forKey: .isApprovedImport)
-		license = try values.decodeIfPresent(String.self, forKey: .license)
-		dateLastImported = try values.decodeIfPresent(String.self, forKey: .dateLastImported)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		websiteURL = try container.decodeIfPresent(String.self, forKey: .websiteURL)
+		comments = try container.decodeIfPresent(String.self, forKey: .comments)
+		dataProviderStatusType = try container.decodeIfPresent(DataProviderStatusType.self, forKey: .dataProviderStatusType)
+		isRestrictedEdit = try container.decodeIfPresent(Bool.self, forKey: .isRestrictedEdit)
+		isOpenDataLicensed = try container.decodeIfPresent(Bool.self, forKey: .isOpenDataLicensed)
+		isApprovedImport = try container.decodeIfPresent(Bool.self, forKey: .isApprovedImport)
+		license = try container.decodeIfPresent(String.self, forKey: .license)
+		dateLastImported = try container.decodeIfPresent(String.self, forKey: .dateLastImported)
+		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }

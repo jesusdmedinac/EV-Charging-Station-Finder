@@ -14,28 +14,26 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 
 struct UsageType : Codable {
-	let isPayAtLocation : String?
-	let isMembershipRequired : String?
-	let isAccessKeyRequired : String?
-	let iD : Int?
-	let title : String?
-
+	let isPayAtLocation: Bool?
+	let isMembershipRequired: Bool?
+	let isAccessKeyRequired: Bool?
+	let id: Int?
+	let title: String?
+	
 	enum CodingKeys: String, CodingKey {
-
 		case isPayAtLocation = "IsPayAtLocation"
 		case isMembershipRequired = "IsMembershipRequired"
 		case isAccessKeyRequired = "IsAccessKeyRequired"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
-
+	
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		isPayAtLocation = try values.decodeIfPresent(String.self, forKey: .isPayAtLocation)
-		isMembershipRequired = try values.decodeIfPresent(String.self, forKey: .isMembershipRequired)
-		isAccessKeyRequired = try values.decodeIfPresent(String.self, forKey: .isAccessKeyRequired)
-		iD = try values.decodeIfPresent(Int.self, forKey: .iD)
-		title = try values.decodeIfPresent(String.self, forKey: .title)
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		isPayAtLocation = try container.decodeIfPresent(Bool.self, forKey: .isPayAtLocation)
+		isMembershipRequired = try container.decodeIfPresent(Bool.self, forKey: .isMembershipRequired)
+		isAccessKeyRequired = try container.decodeIfPresent(Bool.self, forKey: .isAccessKeyRequired)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
+		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
-
 }
