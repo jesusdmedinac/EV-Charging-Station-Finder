@@ -4,6 +4,16 @@
 
 A simple list-detail app that displays a list of EV charging stations from OpenChargeMap API and allows the user to select one to view its details.
 
+## Setup instructions
+
+The app is expecting a **Secrets.xcconfig** file to be present in the root directory of the project. This file should contain the following variables:
+
+*   **OPEN_CHARGE_MAP_KEY**: The API key for the OpenChargeMap API.
+
+Just create a copy of the **Secrets.xcconfig.example** file and rename it to **Secrets.xcconfig**.
+
+Make you to replace the **OPEN_CHARGE_MAP_KEY** value with your own API key.
+
 ## Architecture Proposal
 
 The architecture of the application is based on the **MVVM architecture**. The application is divided into three layers: **Data Layer**, **Domain Layer**, and **Presentation Layer**.
