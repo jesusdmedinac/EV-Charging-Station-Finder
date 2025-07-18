@@ -10,13 +10,16 @@ import Foundation
 class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
   private let evChargingStationsLocalDataSource: EVChargingStationsLocalDataSource
   private let evChargingStationsRemoteDataSource: EVChargingStationsRemoteDataSource
+  private let evChargingStationMapper: EVChargingStationMapper
   
   init(
     evChargingStationsLocalDataSource: EVChargingStationsLocalDataSource,
-    evChargingStationsRemoteDataSource: EVChargingStationsRemoteDataSource
+    evChargingStationsRemoteDataSource: EVChargingStationsRemoteDataSource,
+    evChargingStationMapper: EVChargingStationMapper
   ) {
     self.evChargingStationsLocalDataSource = evChargingStationsLocalDataSource
     self.evChargingStationsRemoteDataSource = evChargingStationsRemoteDataSource
+    self.evChargingStationMapper = evChargingStationMapper
   }
     
   func fetchStations(
@@ -36,33 +39,8 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
         longitude: longitude,
         distance: distance
       )
-            
-      let stations = poiResponses.compactMap { poi -> EVChargingStation? in
-        guard let id = poi.id?.description,
-          let name = poi.addressInfo?.title,
-          let address = poi.addressInfo?.addressLine1,
-          let latitude = poi.addressInfo?.latitude,
-          let longitude = poi.addressInfo?.longitude else {
-          return nil
-        }
-                
-        let connectorTypes = poi.connections?.compactMap { connection -> ConnectorType? in
-          guard let type = connection.connectionType,
-            let typeName = type.title else {
-            return nil
-          }
-          return ConnectorType(id: type.id?.description ?? "", name: typeName)
-        } ?? []
-                
-        return EVChargingStation(
-          id: id,
-          name: name,
-          address: address,
-          location: LatLong(latitude: latitude, longitude: longitude),
-          connectorTypes: connectorTypes,
-          accessComments: poi.usageCost ?? ""
-        )
-      }
+      
+      let stations = evChargingStationMapper.map(poiResponses)
             
       saveStations(stations)
             
