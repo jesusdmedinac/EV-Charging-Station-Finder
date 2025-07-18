@@ -20,7 +20,8 @@ struct StationsListScreen : View {
   init() {
     self.evChargingStationsRepositoryImpl = EVChargingStationsRepositoryImpl(
       evChargingStationsLocalDataSource: EVChargingStationsInMemoryDataSource(),
-      evChargingStationsRemoteDataSource: EVChargingStationsAPIService()
+      evChargingStationsRemoteDataSource: EVChargingStationsAPIService(),
+      evChargingStationMapper: EVChargingStationMapper()
     )
   }
   
