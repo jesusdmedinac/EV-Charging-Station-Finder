@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		D957B39C2E29DC75002F4A4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D957B3842E29DC74002F4A4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D957B38B2E29DC74002F4A4D;
+			remoteInfo = "EV Charging Station Finder";
+		};
+		D957B3A62E29DC75002F4A4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D957B3842E29DC74002F4A4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D957B38B2E29DC74002F4A4D;
+			remoteInfo = "EV Charging Station Finder";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D957B38C2E29DC74002F4A4D /* EV Charging Station Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EV Charging Station Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D957B39B2E29DC75002F4A4D /* EV Charging Station FinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EV Charging Station FinderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D957B3A52E29DC75002F4A4D /* EV Charging Station FinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EV Charging Station FinderUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		D957B38E2E29DC74002F4A4D /* EV Charging Station Finder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EV Charging Station Finder";
+			sourceTree = "<group>";
+		};
+		D957B39E2E29DC75002F4A4D /* EV Charging Station FinderTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EV Charging Station FinderTests";
+			sourceTree = "<group>";
+		};
+		D957B3A82E29DC75002F4A4D /* EV Charging Station FinderUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "EV Charging Station FinderUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D957B3892E29DC74002F4A4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D957B3982E29DC75002F4A4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D957B3A22E29DC75002F4A4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D957B3832E29DC74002F4A4D = {
+			isa = PBXGroup;
+			children = (
+				D957B38E2E29DC74002F4A4D /* EV Charging Station Finder */,
+				D957B39E2E29DC75002F4A4D /* EV Charging Station FinderTests */,
+				D957B3A82E29DC75002F4A4D /* EV Charging Station FinderUITests */,
+				D957B38D2E29DC74002F4A4D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D957B38D2E29DC74002F4A4D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D957B38C2E29DC74002F4A4D /* EV Charging Station Finder.app */,
+				D957B39B2E29DC75002F4A4D /* EV Charging Station FinderTests.xctest */,
+				D957B3A52E29DC75002F4A4D /* EV Charging Station FinderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D957B38B2E29DC74002F4A4D /* EV Charging Station Finder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D957B3AF2E29DC75002F4A4D /* Build configuration list for PBXNativeTarget "EV Charging Station Finder" */;
+			buildPhases = (
+				D957B3882E29DC74002F4A4D /* Sources */,
+				D957B3892E29DC74002F4A4D /* Frameworks */,
+				D957B38A2E29DC74002F4A4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D957B38E2E29DC74002F4A4D /* EV Charging Station Finder */,
+			);
+			name = "EV Charging Station Finder";
+			packageProductDependencies = (
+			);
+			productName = "EV Charging Station Finder";
+			productReference = D957B38C2E29DC74002F4A4D /* EV Charging Station Finder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D957B39A2E29DC75002F4A4D /* EV Charging Station FinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D957B3B22E29DC75002F4A4D /* Build configuration list for PBXNativeTarget "EV Charging Station FinderTests" */;
+			buildPhases = (
+				D957B3972E29DC75002F4A4D /* Sources */,
+				D957B3982E29DC75002F4A4D /* Frameworks */,
+				D957B3992E29DC75002F4A4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D957B39D2E29DC75002F4A4D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D957B39E2E29DC75002F4A4D /* EV Charging Station FinderTests */,
+			);
+			name = "EV Charging Station FinderTests";
+			packageProductDependencies = (
+			);
+			productName = "EV Charging Station FinderTests";
+			productReference = D957B39B2E29DC75002F4A4D /* EV Charging Station FinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D957B3A42E29DC75002F4A4D /* EV Charging Station FinderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D957B3B52E29DC75002F4A4D /* Build configuration list for PBXNativeTarget "EV Charging Station FinderUITests" */;
+			buildPhases = (
+				D957B3A12E29DC75002F4A4D /* Sources */,
+				D957B3A22E29DC75002F4A4D /* Frameworks */,
+				D957B3A32E29DC75002F4A4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D957B3A72E29DC75002F4A4D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D957B3A82E29DC75002F4A4D /* EV Charging Station FinderUITests */,
+			);
+			name = "EV Charging Station FinderUITests";
+			packageProductDependencies = (
+			);
+			productName = "EV Charging Station FinderUITests";
+			productReference = D957B3A52E29DC75002F4A4D /* EV Charging Station FinderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D957B3842E29DC74002F4A4D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					D957B38B2E29DC74002F4A4D = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					D957B39A2E29DC75002F4A4D = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = D957B38B2E29DC74002F4A4D;
+					};
+					D957B3A42E29DC75002F4A4D = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = D957B38B2E29DC74002F4A4D;
+					};
+				};
+			};
+			buildConfigurationList = D957B3872E29DC74002F4A4D /* Build configuration list for PBXProject "EV Charging Station Finder" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D957B3832E29DC74002F4A4D;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = D957B38D2E29DC74002F4A4D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D957B38B2E29DC74002F4A4D /* EV Charging Station Finder */,
+				D957B39A2E29DC75002F4A4D /* EV Charging Station FinderTests */,
+				D957B3A42E29DC75002F4A4D /* EV Charging Station FinderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D957B38A2E29DC74002F4A4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D957B3992E29DC75002F4A4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D957B3A32E29DC75002F4A4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D957B3882E29DC74002F4A4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D957B3972E29DC75002F4A4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D957B3A12E29DC75002F4A4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D957B39D2E29DC75002F4A4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D957B38B2E29DC74002F4A4D /* EV Charging Station Finder */;
+			targetProxy = D957B39C2E29DC75002F4A4D /* PBXContainerItemProxy */;
+		};
+		D957B3A72E29DC75002F4A4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D957B38B2E29DC74002F4A4D /* EV Charging Station Finder */;
+			targetProxy = D957B3A62E29DC75002F4A4D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D957B3AD2E29DC75002F4A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D957B3AE2E29DC75002F4A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D957B3B02E29DC75002F4A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jesusdmedinac.EV-Charging-Station-Finder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D957B3B12E29DC75002F4A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jesusdmedinac.EV-Charging-Station-Finder";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D957B3B32E29DC75002F4A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jesusdmedinac.EV-Charging-Station-FinderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EV Charging Station Finder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EV Charging Station Finder";
+			};
+			name = Debug;
+		};
+		D957B3B42E29DC75002F4A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jesusdmedinac.EV-Charging-Station-FinderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EV Charging Station Finder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EV Charging Station Finder";
+			};
+			name = Release;
+		};
+		D957B3B62E29DC75002F4A4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jesusdmedinac.EV-Charging-Station-FinderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EV Charging Station Finder";
+			};
+			name = Debug;
+		};
+		D957B3B72E29DC75002F4A4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RH386Z3CQP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jesusdmedinac.EV-Charging-Station-FinderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EV Charging Station Finder";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D957B3872E29DC74002F4A4D /* Build configuration list for PBXProject "EV Charging Station Finder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D957B3AD2E29DC75002F4A4D /* Debug */,
+				D957B3AE2E29DC75002F4A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D957B3AF2E29DC75002F4A4D /* Build configuration list for PBXNativeTarget "EV Charging Station Finder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D957B3B02E29DC75002F4A4D /* Debug */,
+				D957B3B12E29DC75002F4A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D957B3B22E29DC75002F4A4D /* Build configuration list for PBXNativeTarget "EV Charging Station FinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D957B3B32E29DC75002F4A4D /* Debug */,
+				D957B3B42E29DC75002F4A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D957B3B52E29DC75002F4A4D /* Build configuration list for PBXNativeTarget "EV Charging Station FinderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D957B3B62E29DC75002F4A4D /* Debug */,
+				D957B3B72E29DC75002F4A4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D957B3842E29DC74002F4A4D /* Project object */;
+}
