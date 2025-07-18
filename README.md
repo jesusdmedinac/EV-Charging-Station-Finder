@@ -18,6 +18,12 @@ The **Data Layer** is responsible for fetching data from the **OpenChargeMap API
 
 It also includes a **EVChargingStationsInMemoryDataSource** to store the data in memory. It could be replaced with a **Core Data** or **SQLite** database in the future.
 
+#### Models
+
+The **Models** are the data models that are used to represent the data from the **OpenChargeMap API**.
+
+[JSON4Swift](https://www.json4swift.com/) was used to generate the models from the **OpenChargeMap API**.
+
 ### Domain Layer
 
 The **Domain Layer** is responsible for business logic. It is divided into two sublayers: **Use Cases** and **Repositories**.

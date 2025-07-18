@@ -8,5 +8,16 @@
 import Foundation
 
 protocol EVChargingStationsRemoteDataSource {
-  // TODO: Not yet implemented
+  // Fetches a list of EV charging stations near the specified location
+  // - Parameters:
+  //   - latitude: The latitude coordinate of the center point
+  //   - longitude: The longitude coordinate of the center point
+  //   - distance: The max distance from the given latitude and longitude
+  // - Returns: An array of `EVChargingStation` objects
+  // - Throws: An error if the request fails
+  func fetchEVChargingStations(
+    latitude: Double,
+    longitude: Double,
+    distance: Double
+  ) async throws -> [POIResponse]
 }
