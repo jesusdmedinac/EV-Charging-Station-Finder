@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DomainConnectorType {
+struct DomainConnectorType : Equatable {
   let id: String
   let name: String
 }

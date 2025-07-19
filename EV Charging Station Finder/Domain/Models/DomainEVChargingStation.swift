@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DomainEVChargingStation {
+struct DomainEVChargingStation : Equatable {
   let id: String
   let name: String
   let address: String

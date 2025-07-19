@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DomainLatLong {
+struct DomainLatLong : Equatable {
   let latitude: Double?
   let longitude: Double?
 }
