@@ -5,27 +5,19 @@
 //  Created by Jesus Daniel Medina Cruz on 18/07/25.
 //
 
+import Foundation
 import SwiftUI
 
-struct UIEVChargingStation : Identifiable {
-  var id: String { name }
-  
-  let name: String
-}
-
 struct StationsListScreen : View {
-  private let container = DIContainer.shared
+  private static let container = DIContainer.shared
   
-  @State private var data: [UIEVChargingStation] = []
-  private let getEVChargingStationsUseCase: GetEVChargingStationsUseCase
-  
-  init() {
-    self.getEVChargingStationsUseCase = container.resolve(GetEVChargingStationsUseCase.self)
-  }
+  @StateObject private var stationsListScreenViewModel: StationsListScreenViewModel = {
+    return container.resolve(StationsListScreenViewModel.self)
+  }()
   
   var body: some View {
     VStack {
-      ForEach(data) { item in
+      ForEach(stationsListScreenViewModel.stations) { item in
         Text(item.name)
       }
     }
@@ -37,8 +29,7 @@ struct StationsListScreen : View {
   private func callFetch() {
     Task {
       do {
-        let data = try await self.getEVChargingStationsUseCase.execute(latitude: 0.0, longitude: 0.0, distance: 10)
-        self.data = data.map({ UIEVChargingStation(name: $0.name) })
+        try stationsListScreenViewModel.fetchStations()
       } catch {
         switch error {
           case EVChargingAPIError.missingAPIKey:
