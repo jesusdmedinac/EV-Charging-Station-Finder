@@ -12,7 +12,7 @@ struct UIEVChargingStation : Identifiable {
   
   let name: String
   let address: String
-  let location: LatLong
-  let connectorTypes: [ConnectorType]
+  let location: UILatLong?
+  let connectorTypes: [UIConnectorType]
   let accessComments: String
 }

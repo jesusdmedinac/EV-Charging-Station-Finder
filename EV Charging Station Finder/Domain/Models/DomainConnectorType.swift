@@ -1,5 +1,5 @@
 //
-//  LatLong.swift
+//  DomainConnectorType.swift
 //  EV Charging Station Finder
 //
 //  Created by Jesus Daniel Medina Cruz on 18/07/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LatLong {
-  let latitude: Double
-  let longitude: Double
+struct DomainConnectorType {
+  let id: String
+  let name: String
 }

@@ -7,8 +7,10 @@
 
 import Foundation
 import Combine
+import CoreLocation
 
-class StationsListScreenViewModel : ObservableObject {
+@MainActor
+class StationsListScreenViewModel: ObservableObject {
   private let getEVChargingStationsUseCase: GetEVChargingStationsUseCase
   private let uiEVChargingStationMapper: UIEVChargingStationMapper
   
@@ -18,22 +20,28 @@ class StationsListScreenViewModel : ObservableObject {
   
   @Published var stations: [UIEVChargingStation] = []
   @Published var isLoading: Bool = false
+  @Published var error: Error?
   
-  init(getEVChargingStationsUseCase: GetEVChargingStationsUseCase, uiEVChargingStationMapper: UIEVChargingStationMapper) {
+  init(getEVChargingStationsUseCase: GetEVChargingStationsUseCase,
+       uiEVChargingStationMapper: UIEVChargingStationMapper) {
     self.getEVChargingStationsUseCase = getEVChargingStationsUseCase
     self.uiEVChargingStationMapper = uiEVChargingStationMapper
   }
   
-  func fetchStations() throws {
+  func fetchStations() async throws {
     isLoading = true
     
-    Task {
-      do {
-        let stations = try await getEVChargingStationsUseCase.execute(latitude: defaultLatitude, longitude: defaultLongitude, distance: defaultDistance)
-        self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
-      } catch {
-        print("Error \(error)")
-      }
+    do {
+      let stations = try await getEVChargingStationsUseCase.execute(
+          latitude: defaultLatitude,
+          longitude: defaultLongitude,
+          distance: defaultDistance
+      )
+      self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
+      self.error = nil
+    } catch {
+      self.error = error
+      throw error
     }
   }
 }

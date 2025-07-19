@@ -6,13 +6,13 @@
 //
 
 class EVChargingStationsInMemoryDataSource : EVChargingStationsLocalDataSource {
-  private var evChargingStations: [EVChargingStation] = []
+  private var evChargingStations: [DomainEVChargingStation] = []
   
-  func fetchEVChargingStations() -> [EVChargingStation] {
+  func fetchEVChargingStations() -> [DomainEVChargingStation] {
     return evChargingStations
   }
   
-  func saveEVChargingStations(_ items: [EVChargingStation]) {
+  func saveEVChargingStations(_ items: [DomainEVChargingStation]) {
     evChargingStations = items
   }
   
@@ -20,11 +20,11 @@ class EVChargingStationsInMemoryDataSource : EVChargingStationsLocalDataSource {
     evChargingStations.removeAll()
   }
   
-  func getEVChargingStation(id: String) -> EVChargingStation? {
+  func getEVChargingStation(id: String) -> DomainEVChargingStation? {
     return evChargingStations.first(where: { $0.id == id })
   }
   
-  func saveEVChargingStation(_ item: EVChargingStation) {
+  func saveEVChargingStation(_ item: DomainEVChargingStation) {
     evChargingStations.append(item)
   }
   

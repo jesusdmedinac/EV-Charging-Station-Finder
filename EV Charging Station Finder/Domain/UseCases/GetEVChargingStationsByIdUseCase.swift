@@ -11,5 +11,5 @@ protocol GetEVChargingStationsByIdUseCase {
   /// - Parameter id: The id of the EV charging station to fetch.
   /// - Returns: The EV charging station with the specified id.
   /// - Throws: An error if the EV charging station with the specified id is not found.
-  func execute(id: String) async throws -> EVChargingStation
+  func execute(id: String) async throws -> DomainEVChargingStation
 }

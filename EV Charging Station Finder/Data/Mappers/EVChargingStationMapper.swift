@@ -8,40 +8,48 @@
 import Foundation
 
 class EVChargingStationMapper {
-  /// Maps a `POIResponse` to an `EVChargingStation`
-  /// - Parameter poi: The `POIResponse` to be mapped
-  /// - Returns: An optional `EVChargingStation` if the mapping is successful, otherwise nil
-  func map(_ poi: POIResponse) -> EVChargingStation? {
-    guard let id = poi.id?.description,
-        let name = poi.addressInfo?.title,
-        let address = poi.addressInfo?.addressLine1,
-        let latitude = poi.addressInfo?.latitude,
-        let longitude = poi.addressInfo?.longitude else {
+  /// Maps a `Connection` to a `DomainConnectorType`
+  /// - Parameter connection: The `Connection` to be mapped
+  /// - Returns: An optional `DomainConnectorType` if the mapping is successful, otherwise nil
+  func map(_ connection: Connection?) -> DomainConnectorType? {
+    guard let connection else { return nil }
+    guard let type = connection.connectionType,
+        let typeName = type.title else {
       return nil
     }
-    
-    let connectorTypes = poi.connections?.compactMap { connection -> ConnectorType? in
-      guard let type = connection.connectionType,
-          let typeName = type.title else {
-        return nil
-      }
-      return ConnectorType(id: type.id?.description ?? "", name: typeName)
-    } ?? []
-    
-    return EVChargingStation(
-      id: id,
-      name: name,
-      address: address,
-      location: LatLong(latitude: latitude, longitude: longitude),
-      connectorTypes: connectorTypes,
-      accessComments: poi.usageCost ?? ""
+    return DomainConnectorType(id: type.id?.description ?? "", name: typeName)
+  }
+  
+  /// Maps an `AddressInfo` to a `DomainLatLong`
+  /// - Parameter addressInfo: The `AddressInfo` to be mapped
+  /// - Returns: An optional `DomainLatLong` if the mapping is successful, otherwise nil
+  func map(_ addressInfo: AddressInfo?) -> DomainLatLong? {
+    guard let addressInfo else { return nil }
+    return DomainLatLong(
+      latitude: addressInfo.latitude,
+      longitude: addressInfo.longitude
     )
   }
   
-  /// Maps an array of `POIResponse` to an array of `EVChargingStation`
+  /// Maps a `POIResponse` to a `DomainEVChargingStation`
+  /// - Parameter poi: The `POIResponse` to be mapped
+  /// - Returns: An optional `DomainEVChargingStation` if the mapping is successful, otherwise nil
+  func map(_ poi: POIResponse) -> DomainEVChargingStation? {
+    guard let id = poi.id?.description,
+        let name = poi.addressInfo?.title,
+        let address = poi.addressInfo?.addressLine1 else {
+      return nil
+    }
+    
+    let accessComments = poi.addressInfo?.accessComments ?? "No comments"
+    
+    return DomainEVChargingStation(id: id, name: name, address: address, location: map(poi.addressInfo), connectorTypes: poi.connections?.compactMap { map($0) } ?? [], accessComments: accessComments)
+  }
+  
+  /// Maps an array of `POIResponse` to an array of `DomainEVChargingStation`
   /// - Parameter poiResponses: The array of `POIResponse` to be mapped
-  /// - Returns: An array of `EVChargingStation`
-  func map(_ poiResponses: [POIResponse]) -> [EVChargingStation] {
+  /// - Returns: An array of `DomainEVChargingStation`
+  func map(_ poiResponses: [POIResponse]) -> [DomainEVChargingStation] {
     return poiResponses.compactMap { map($0) }
   }
 }

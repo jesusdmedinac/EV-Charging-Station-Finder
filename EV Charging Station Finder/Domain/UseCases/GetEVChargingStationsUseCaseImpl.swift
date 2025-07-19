@@ -12,7 +12,7 @@ class GetEVChargingStationsUseCaseImpl: GetEVChargingStationsUseCase {
     self.repository = repository
   }
   
-  func execute(latitude: Double, longitude: Double, distance: Double) async throws -> [EVChargingStation] {
+  func execute(latitude: Double, longitude: Double, distance: Double) async throws -> [DomainEVChargingStation] {
     return try await repository.fetchStations(latitude: latitude, longitude: longitude, distance: distance)
   }
 }
