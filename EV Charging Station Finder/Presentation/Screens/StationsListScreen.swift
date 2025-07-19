@@ -52,6 +52,7 @@ struct StationRow: View {
     NavigationLink(destination: StationDetailScreen(uiEVChargingStation: uiEVChargingStation)) {
       HStack {
         Image(systemName: "ev.charger")
+          .font(.system(size: 16))
           .foregroundColor(.white)
           .padding(8)
           .background(Color.green)
@@ -85,7 +86,7 @@ struct StationRow: View {
     let latitude: Double = Double(location.latitude ?? 0)
     let longitude: Double = Double(location.longitude ?? 0)
     let stationLocation = CLLocation(latitude: latitude, longitude: longitude)
-    let userLocation = CLLocation(latitude: 20.6895, longitude: -103.3653)
+    let userLocation = CLLocation(latitude: 34.0286238, longitude: -84.2173394)
     let distance = userLocation.distance(from: stationLocation)
     distanceInMiles = "\(String(describing: Int(round(distance * MathConstants.milesFactor)))) mi"
   }

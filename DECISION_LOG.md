@@ -35,11 +35,27 @@ This document captures the key architectural and implementation decisions made d
 
 ## 2025-07-19
 
-### Presentation Layer
-- **Decision**: Implemented MVVM pattern for the UI layer
-- **Details**: 
-  - Created ViewModel to handle business logic and state management
-  - Implemented the main StationsListScreen
+### Presentation Layer - Map Integration
+- **Decision**: Added MapView for station location visualization
+- **Details**:
+  - Implemented a reusable MapView component using MapKit
+  - Added support for displaying multiple annotations
+  - Integrated with SwiftUI using UIViewRepresentable
+
+### Station Detail Screen
+- **Decision**: Implemented StationDetailScreen with map integration
+- **Details**:
+  - Created a detailed view for individual charging stations
+  - Integrated MapView to show station location
+  - Added UI components for station information display
+  - MKMapView is used to display the map
+
+### UI Enhancements
+- **Decision**: Improved station list item appearance
+- **Details**:
+  - Adjusted icon sizing for better visual hierarchy
+  - Updated location handling with new default coordinates (34.0286238, -84.2173394)
+  - Enhanced overall UI consistency
 
 ## Key Architectural Decisions
 
