@@ -21,7 +21,7 @@ class EVChargingStationsAPIService : EVChargingStationsRemoteDataSource {
       throw EVChargingAPIError.missingAPIKey
     }
     
-    let baseUrl = OpenChargeMapAPI.baseURL
+    let baseUrl = OpenChargeMapAPIConstants.baseURL
     let stringUrl = "\(baseUrl)poi?output=json&lat=\(latitude)&lon=\(longitude)&distance=\(distance)&maxresults=10&key=\(openChargeMapKey)"
     
     guard let url = URL(string: stringUrl) else {

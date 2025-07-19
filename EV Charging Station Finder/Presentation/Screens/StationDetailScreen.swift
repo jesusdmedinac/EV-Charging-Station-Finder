@@ -9,11 +9,7 @@ import SwiftUI
 import MapKit
 
 struct StationDetailScreen: View {
-  private let station: UIEVChargingStation?
-  
-  init() {
-    self.station = nil
-  }
+  let uiEVChargingStation: UIEVChargingStation
     
   var body: some View {
     Text("StationDetailView")

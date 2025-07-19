@@ -19,9 +19,7 @@ struct StationsListScreen: View {
   var body: some View {
     NavigationView {
       List(viewModel.stations) { station in
-        NavigationLink(destination: StationDetailScreen()) {
-          Text(station.name)
-        }
+        StationRow(uiEVChargingStation: station)
       }
       .navigationBarTitle("EV Charging Stations")
     }
@@ -39,4 +37,61 @@ struct StationsListScreen: View {
       print("\(error)")
     }
   }
+}
+
+#Preview {
+  StationsListScreen()
+}
+
+struct StationRow: View {
+  let uiEVChargingStation: UIEVChargingStation
+  
+  @State private var distanceInMiles: String? = ""
+  
+  var body: some View {
+    NavigationLink(destination: StationDetailScreen(uiEVChargingStation: uiEVChargingStation)) {
+      HStack {
+        Image(systemName: "ev.charger")
+          .foregroundColor(.white)
+          .padding(8)
+          .background(Color.green)
+          .clipShape(Circle())
+        VStack(alignment: .leading) {
+          Text(uiEVChargingStation.name)
+            .font(.system(size: 14))
+          Text(uiEVChargingStation.address)
+            .font(.system(size: 12))
+        }
+        Spacer()
+        HStack {
+          Image(systemName: "location")
+          Text(distanceInMiles ?? "")
+        }
+        .foregroundColor(.white)
+        .padding(4)
+        .background(Color.blue)
+        .clipShape(RoundedRectangle(cornerRadius: CGFloat(8)))
+      }
+    }
+    .onAppear {
+      Task {
+        await fetchLocation()
+      }
+    }
+  }
+  
+  private func fetchLocation() async {
+    guard let location = uiEVChargingStation.location else { return }
+    let latitude: Double = Double(location.latitude ?? 0)
+    let longitude: Double = Double(location.longitude ?? 0)
+    let stationLocation = CLLocation(latitude: latitude, longitude: longitude)
+    let userLocation = CLLocation(latitude: 20.6895, longitude: -103.3653)
+    let distance = userLocation.distance(from: stationLocation)
+    distanceInMiles = "\(String(describing: Int(round(distance * MathConstants.milesFactor)))) mi"
+  }
+}
+
+#Preview {
+  let uiEVChargingStation = UIEVChargingStation(name: "name", address: "address", location: UILatLong(latitude: 0.0, longitude: 0.0), connectorTypes: [], accessComments: "accessComments")
+  StationRow(uiEVChargingStation: uiEVChargingStation)
 }
