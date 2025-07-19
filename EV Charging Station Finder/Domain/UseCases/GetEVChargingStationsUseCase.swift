@@ -14,5 +14,5 @@ protocol GetEVChargingStationsUseCase {
   ///   - distance: The max distance from the given latitude and longitude.
   /// - Returns: An array of `EVChargingStation` objects.
   /// - Throws: An error if the request fails.
-  func execute(latitude: Double, longitude: Double, distance: Double) async throws -> [EVChargingStation]
+  func execute(latitude: Double, longitude: Double, distance: Double) async throws -> [DomainEVChargingStation]
 }

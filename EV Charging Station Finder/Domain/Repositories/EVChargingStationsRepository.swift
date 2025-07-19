@@ -19,17 +19,17 @@ protocol EVChargingStationsRepository {
     latitude: Double,
     longitude: Double,
     distance: Double
-  ) async throws -> [EVChargingStation]
+  ) async throws -> [DomainEVChargingStation]
   
   // Removes all EV charging stations from the repository
   func removeAllStations()
   
   // Saves an array of EV charging stations to the repository
   // - Parameter stations: Array of `EVChargingStation` objects to save
-  func saveStations(_ stations: [EVChargingStation])
+  func saveStations(_ stations: [DomainEVChargingStation])
   
   // Fetches a specific EV charging station by its id
   // - Parameter id: The id of the EV charging station to fetch
   // - Returns: The EV charging station with the specified id
-  func fetchStation(id: String) async throws -> EVChargingStation?
+  func fetchStation(id: String) async throws -> DomainEVChargingStation?
 }

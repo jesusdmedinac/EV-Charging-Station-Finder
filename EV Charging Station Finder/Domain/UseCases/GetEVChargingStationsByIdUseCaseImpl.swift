@@ -12,7 +12,7 @@ class GetEVChargingStationsByIdUseCaseImpl: GetEVChargingStationsByIdUseCase {
     self.repository = repository
   }
   
-  func execute(id: String) async throws -> EVChargingStation {
+  func execute(id: String) async throws -> DomainEVChargingStation {
     guard let station = try await repository.fetchStation(id: id) else {
       throw UseCaseError.notFound
     }

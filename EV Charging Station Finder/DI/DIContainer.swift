@@ -8,6 +8,7 @@
 import Foundation
 import Swinject
 
+@MainActor
 final class DIContainer {
   static let shared = DIContainer()
 
@@ -92,6 +93,7 @@ final class DIContainer {
 }
 
 @propertyWrapper
+@MainActor
 struct Injected<T> {
   private let type: T.Type
   

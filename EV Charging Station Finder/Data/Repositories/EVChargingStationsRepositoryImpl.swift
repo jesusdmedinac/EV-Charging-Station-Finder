@@ -26,7 +26,7 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
     latitude: Double,
     longitude: Double,
     distance: Double
-  ) async throws -> [EVChargingStation] {
+  ) async throws -> [DomainEVChargingStation] {
     let localStations = evChargingStationsLocalDataSource.fetchEVChargingStations()
     
     if !localStations.isEmpty {
@@ -41,7 +41,7 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
       )
       
       let stations = evChargingStationMapper.map(poiResponses)
-            
+
       saveStations(stations)
             
       return stations
@@ -57,11 +57,11 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
     evChargingStationsLocalDataSource.clearEVChargingStations()
   }
     
-  func saveStations(_ stations: [EVChargingStation]) {
+  func saveStations(_ stations: [DomainEVChargingStation]) {
     evChargingStationsLocalDataSource.saveEVChargingStations(stations)
   }
   
-  func fetchStation(id: String) async throws -> EVChargingStation? {
+  func fetchStation(id: String) async throws -> DomainEVChargingStation? {
     evChargingStationsLocalDataSource.getEVChargingStation(id: id)
   }
 }
