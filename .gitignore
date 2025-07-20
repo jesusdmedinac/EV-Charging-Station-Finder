@@ -1,2 +1,5 @@
 # iOS
 Secrets.xcconfig
+
+# Mac
+.DS_Store
