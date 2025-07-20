@@ -22,14 +22,14 @@ struct StationsListScreen: View {
         ZStack {
           Text("Something went wrong... please pull to refresh to try again.")
         }
+      } else if viewModel.isLoading {
+        ZStack {
+          ProgressView()
+        }
       } else {
         ZStack {
-          if viewModel.isLoading || viewModel.stations.isEmpty {
-            ProgressView()
-          } else {
-            List(viewModel.stations) { station in
-              StationRow(uiEVChargingStation: station)
-            }
+          List(viewModel.stations) { station in
+            StationRow(uiEVChargingStation: station)
           }
         }
         .navigationBarTitle("EV Charging Stations")

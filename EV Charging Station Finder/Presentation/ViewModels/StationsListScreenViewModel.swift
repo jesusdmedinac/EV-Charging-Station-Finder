@@ -20,7 +20,7 @@ class StationsListScreenViewModel: ObservableObject {
   
   @Published var stations: [UIEVChargingStation] = []
   @Published var isLoading: Bool = false
-  @Published var error: Error? = NSError(domain: "", code: 0)
+  @Published var error: Error? = nil
   
   init(getEVChargingStationsUseCase: GetEVChargingStationsUseCase,
        uiEVChargingStationMapper: UIEVChargingStationMapper) {
@@ -29,13 +29,13 @@ class StationsListScreenViewModel: ObservableObject {
   }
   
   func fetchStations() async throws {
-    isLoading = true
+    self.isLoading = true
     
     do {
       let stations = try await getEVChargingStationsUseCase.execute(
-          latitude: defaultLatitude,
-          longitude: defaultLongitude,
-          distance: defaultDistance
+        latitude: defaultLatitude,
+        longitude: defaultLongitude,
+        distance: defaultDistance
       )
       self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
       self.error = nil

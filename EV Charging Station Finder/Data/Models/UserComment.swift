@@ -16,7 +16,7 @@ struct UserComment: Codable {
   let id: Int?
   let chargePointId: Int?
   let commentTypeId: Int?
-  let commentType: String?
+  let commentType: CommentType?
   let userName: String?
   let comment: String?
   let rating: Int?
@@ -42,7 +42,7 @@ struct UserComment: Codable {
     id = try container.decodeIfPresent(Int.self, forKey: .id)
     chargePointId = try container.decodeIfPresent(Int.self, forKey: .chargePointId)
     commentTypeId = try container.decodeIfPresent(Int.self, forKey: .commentTypeId)
-    commentType = try container.decodeIfPresent(String.self, forKey: .commentType)
+    commentType = try container.decodeIfPresent(CommentType.self, forKey: .commentType)
     userName = try container.decodeIfPresent(String.self, forKey: .userName)
     comment = try container.decodeIfPresent(String.self, forKey: .comment)
     rating = try container.decodeIfPresent(Int.self, forKey: .rating)
@@ -55,7 +55,7 @@ struct UserComment: Codable {
     id: Int? = nil,
     chargePointId: Int? = nil,
     commentTypeId: Int? = nil,
-    commentType: String? = nil,
+    commentType: CommentType? = nil,
     userName: String? = nil,
     comment: String? = nil,
     rating: Int? = nil,
