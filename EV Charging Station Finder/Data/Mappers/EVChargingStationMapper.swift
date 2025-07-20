@@ -25,9 +25,11 @@ class EVChargingStationMapper {
   /// - Returns: An optional `DomainLatLong` if the mapping is successful, otherwise nil
   func map(_ addressInfo: AddressInfo?) -> DomainLatLong? {
     guard let addressInfo else { return nil }
+    let latitude = addressInfo.latitude ?? 0.0
+    let longitude = addressInfo.longitude ?? 0.0
     return DomainLatLong(
-      latitude: addressInfo.latitude,
-      longitude: addressInfo.longitude
+      latitude: latitude,
+      longitude: longitude
     )
   }
   
@@ -43,7 +45,14 @@ class EVChargingStationMapper {
     
     let accessComments = poi.addressInfo?.accessComments ?? "No comments"
     
-    return DomainEVChargingStation(id: id, name: name, address: address, location: map(poi.addressInfo), connectorTypes: poi.connections?.compactMap { map($0) } ?? [], accessComments: accessComments)
+    return DomainEVChargingStation(
+      id: id,
+      name: name,
+      address: address,
+      location: map(poi.addressInfo),
+      connectorTypes: poi.connections?.compactMap { map($0) } ?? [],
+      accessComments: accessComments
+    )
   }
   
   /// Maps an array of `POIResponse` to an array of `DomainEVChargingStation`

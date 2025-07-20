@@ -117,7 +117,7 @@ This document captures the key architectural and implementation decisions made d
 
 ### Custom Error Handling
 - **Decision**: Implement custom error types for specific application layers.
-- **Details**: Custom error enums like `EVChargingAPIError` and `UseCaseError` are used to provide granular and domain-specific error information. This approach improves error handling clarity, allows for more precise error management, and enhances the overall robustness of the application.
+- **Details**: Custom error enums like `DataError` and `DomainError` are used to provide granular and domain-specific error information. This approach improves error handling clarity, allows for more precise error management, and enhances the overall robustness of the application.
 
 ### API Constants Management
 - **Decision**: Centralize API-related constants in a dedicated `OpenChargeMapAPIConstants.swift` file.

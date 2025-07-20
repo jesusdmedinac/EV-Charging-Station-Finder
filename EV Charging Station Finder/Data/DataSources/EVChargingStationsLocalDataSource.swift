@@ -8,7 +8,7 @@
 protocol EVChargingStationsLocalDataSource {
   // Fetches all EV charging stations
   // - Returns: Array of EVChargingStation objects
-  func fetchEVChargingStations() -> [DomainEVChargingStation]
+  func fetchEVChargingStations() throws -> [DomainEVChargingStation]
   
   // Saves an array of EV charging stations
   // - Parameter items: Array of EVChargingStation objects to save

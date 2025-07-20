@@ -28,7 +28,7 @@ class EVChargingStationsAPIServiceTests {
     do {
       _ = try await evChargingStationsAPIService.fetchEVChargingStations(latitude: 0, longitude: 0, distance: 100)
       Issue.record("Expected missingAPIKey error not thrown")
-    } catch EVChargingAPIError.missingAPIKey {
+    } catch DataError.missingAPIKey {
       // Then expected missingAPIKey error was thrown
     } catch {
       Issue.record("Unexpected error: \(error)")
@@ -47,7 +47,7 @@ class EVChargingStationsAPIServiceTests {
     do {
       _ = try await evChargingStationsAPIService.fetchEVChargingStations(latitude: 0, longitude: 0, distance: 100)
       Issue.record("Expected invalidURL error not thrown")
-    } catch EVChargingAPIError.invalidURL {
+    } catch DataError.invalidURL {
       // Then expected invalidURL error was thrown
     } catch {
       Issue.record("Unexpected error: \(error)")
@@ -67,7 +67,7 @@ class EVChargingStationsAPIServiceTests {
     do {
       _ = try await evChargingStationsAPIService.fetchEVChargingStations(latitude: 0, longitude: 0, distance: 100)
       Issue.record("Expected invalidNetworkClient error not thrown")
-    } catch EVChargingAPIError.invalidNetworkClient {
+    } catch DataError.invalidNetworkClient {
       // Then expected invalidNetworkClient was thrown
     } catch {
       Issue.record("Unexpected error: \(error)")
@@ -91,7 +91,7 @@ class EVChargingStationsAPIServiceTests {
     do {
       _ = try await evChargingStationsAPIService.fetchEVChargingStations(latitude: 0, longitude: 0, distance: 100)
       Issue.record("Expected invalidResponse error not thrown")
-    } catch EVChargingAPIError.invalidResponse {
+    } catch DataError.invalidResponse {
       // Then expected invalidResponse was thrown
     } catch {
       Issue.record("Unexpected error: \(error)")
@@ -117,7 +117,7 @@ class EVChargingStationsAPIServiceTests {
     do {
       _ = try await evChargingStationsAPIService.fetchEVChargingStations(latitude: 0, longitude: 0, distance: 100)
       Issue.record("Expected httpError error not thrown")
-    } catch EVChargingAPIError.httpError(let statusCode) {
+    } catch DataError.httpError(let statusCode) {
       // Then expected httpError was thrown
       #expect(statusCode == outsideRangeValue, "Unexpected status code: \(statusCode)")
     } catch {
@@ -144,7 +144,7 @@ class EVChargingStationsAPIServiceTests {
     do {
       _ = try await evChargingStationsAPIService.fetchEVChargingStations(latitude: 0, longitude: 0, distance: 100)
       Issue.record("Expected decodingError error not thrown")
-    } catch EVChargingAPIError.decodingError(let error) {
+    } catch DataError.decodingError(let error) {
       // Then expected decodingError was thrown
       #expect(error is DecodingError, "Unexpected error: \(error)")
     } catch {

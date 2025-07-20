@@ -14,4 +14,20 @@ struct DomainEVChargingStation : Equatable {
   let location: DomainLatLong?
   let connectorTypes: [DomainConnectorType]
   let accessComments: String
+
+  init(
+    id: String = "",
+    name: String = "",
+    address: String = "",
+    location: DomainLatLong? = nil,
+    connectorTypes: [DomainConnectorType] = [],
+    accessComments: String = ""
+  ) {
+    self.id = id
+    self.name = name
+    self.address = address
+    self.location = location
+    self.connectorTypes = connectorTypes
+    self.accessComments = accessComments
+  }
 }

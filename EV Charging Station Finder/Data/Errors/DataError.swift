@@ -1,5 +1,5 @@
 //
-//  EVChargingAPIError.swift
+//  DataError.swift
 //  EV Charging Station Finder
 //
 //  Created by Jesus Daniel Medina Cruz on 18/07/25.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EVChargingAPIError: Error, LocalizedError {
+enum DataError: Error, LocalizedError {
   case missingAPIKey
   case invalidURL
   case invalidResponse

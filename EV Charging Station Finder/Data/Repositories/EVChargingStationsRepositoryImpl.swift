@@ -27,13 +27,13 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
     longitude: Double,
     distance: Double
   ) async throws -> [DomainEVChargingStation] {
-    let localStations = evChargingStationsLocalDataSource.fetchEVChargingStations()
-    
-    if !localStations.isEmpty {
-      return localStations
-    }
-        
     do {
+      let localStations = try evChargingStationsLocalDataSource.fetchEVChargingStations()
+      
+      if !localStations.isEmpty {
+        return localStations
+      }
+        
       let poiResponses = try await evChargingStationsRemoteDataSource.fetchEVChargingStations(
         latitude: latitude,
         longitude: longitude,
@@ -45,11 +45,10 @@ class EVChargingStationsRepositoryImpl: EVChargingStationsRepository {
       saveStations(stations)
             
       return stations
+    } catch let error as DataError {
+      throw DomainError.data(error)
     } catch {
-      if !localStations.isEmpty {
-        return localStations
-      }
-      throw error
+      throw DomainError.unknown(error)
     }
   }
     

@@ -24,34 +24,34 @@ class EVChargingStationsAPIService : EVChargingStationsRemoteDataSource {
 
   func fetchEVChargingStations(latitude: Double, longitude: Double, distance: Double) async throws -> [POIResponse] {
     guard let openChargeMapKey: String = apiKey else {
-      throw EVChargingAPIError.missingAPIKey
+      throw DataError.missingAPIKey
     }
     
     guard let baseUrl: String = baseUrl else {
-      throw EVChargingAPIError.invalidURL
+      throw DataError.invalidURL
     }
       
     let stringUrl = "\(baseUrl)poi?output=json&lat=\(latitude)&lon=\(longitude)&distance=\(distance)&maxresults=10&key=\(openChargeMapKey)"
     
     guard let url = URL(string: stringUrl) else {
-      throw EVChargingAPIError.invalidURL
+      throw DataError.invalidURL
     }
     
     let request = URLRequest(url: url)
     
     do {
       guard let networkClient: NetworkClient = networkClient else {
-        throw EVChargingAPIError.invalidNetworkClient
+        throw DataError.invalidNetworkClient
       }
       
       let (data, response) = try await networkClient.data(for: request)
         
       guard let httpResponse = response as? HTTPURLResponse else {
-        throw EVChargingAPIError.invalidResponse
+        throw DataError.invalidResponse
       }
         
       guard (200...299).contains(httpResponse.statusCode) else {
-        throw EVChargingAPIError.httpError(httpResponse.statusCode)
+        throw DataError.httpError(httpResponse.statusCode)
       }
         
       do {
@@ -88,14 +88,14 @@ class EVChargingStationsAPIService : EVChargingStationsRemoteDataSource {
             print("⚠️ Decoded as a single object instead of an array")
             return [singlePOI]
           } catch  {
-            throw EVChargingAPIError.decodingError(decodingError)
+            throw DataError.decodingError(decodingError)
           }
         }
       }
-    } catch let error as EVChargingAPIError {
+    } catch let error as DataError {
       throw error
     } catch {
-      throw EVChargingAPIError.networkError(error)
+      throw DataError.networkError(error)
     }
   }
 }
