@@ -20,7 +20,7 @@ class StationsListScreenViewModel: ObservableObject {
   
   @Published var stations: [UIEVChargingStation] = []
   @Published var isLoading: Bool = false
-  @Published var error: Error?
+  @Published var error: Error? = NSError(domain: "", code: 0)
   
   init(getEVChargingStationsUseCase: GetEVChargingStationsUseCase,
        uiEVChargingStationMapper: UIEVChargingStationMapper) {
@@ -39,6 +39,7 @@ class StationsListScreenViewModel: ObservableObject {
       )
       self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
       self.error = nil
+      self.isLoading = false
     } catch {
       self.error = error
       throw error

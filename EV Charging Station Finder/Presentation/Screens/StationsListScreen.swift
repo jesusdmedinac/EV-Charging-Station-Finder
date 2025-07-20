@@ -18,10 +18,22 @@ struct StationsListScreen: View {
     
   var body: some View {
     NavigationView {
-      List(viewModel.stations) { station in
-        StationRow(uiEVChargingStation: station)
+      if viewModel.error != nil {
+        ZStack {
+          Text("Something went wrong... please pull to refresh to try again.")
+        }
+      } else {
+        ZStack {
+          if viewModel.isLoading || viewModel.stations.isEmpty {
+            ProgressView()
+          } else {
+            List(viewModel.stations) { station in
+              StationRow(uiEVChargingStation: station)
+            }
+          }
+        }
+        .navigationBarTitle("EV Charging Stations")
       }
-      .navigationBarTitle("EV Charging Stations")
     }
     .onAppear {
       Task {

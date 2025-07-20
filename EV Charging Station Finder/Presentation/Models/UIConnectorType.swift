@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct UIConnectorType : Identifiable {
+struct UIConnectorType : Identifiable, Equatable {
   var id: String { name }
   
   let name: String
+  
+  init(name: String) {
+    self.name = name
+  }
 }

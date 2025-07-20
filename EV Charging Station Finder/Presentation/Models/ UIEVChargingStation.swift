@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UIEVChargingStation : Identifiable {
+struct UIEVChargingStation : Identifiable, Equatable {
   var id: String { name }
   
   let name: String
@@ -15,4 +15,12 @@ struct UIEVChargingStation : Identifiable {
   let location: UILatLong?
   let connectorTypes: [UIConnectorType]
   let accessComments: String
+  
+  init(name: String = "", address: String = "", location: UILatLong? = nil, connectorTypes: [UIConnectorType] = [], accessComments: String = "") {
+    self.name = name
+    self.address = address
+    self.location = location
+    self.connectorTypes = connectorTypes
+    self.accessComments = accessComments
+  }
 }
