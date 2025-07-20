@@ -1,5 +1,13 @@
-# iOS
-Secrets.xcconfig
-
-# Mac
+# macOS
 .DS_Store
+
+# Xcode
+## User-specific files
+xcuserdata/
+
+## Build products
+build/
+DerivedData/
+
+# Secrets
+Secrets.xcconfig
