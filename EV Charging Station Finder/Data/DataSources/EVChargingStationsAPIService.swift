@@ -7,21 +7,30 @@
 
 import Foundation
 
+extension URLSession: NetworkClient {}
+
 class EVChargingStationsAPIService : EVChargingStationsRemoteDataSource {
-  private let session: URLSession
+  private let apiKey: String?
+  private let baseUrl: String?
+  private let networkClient: NetworkClient?
   private let decoder: JSONDecoder
   
-  init(session: URLSession = .shared, decoder: JSONDecoder = JSONDecoder()) {
-    self.session = session
+  init(apiKey: String? = nil, baseUrl: String? = nil, networkClient: NetworkClient? = nil, decoder: JSONDecoder = JSONDecoder()) {
+    self.apiKey = apiKey
+    self.baseUrl = baseUrl
+    self.networkClient = networkClient
     self.decoder = decoder
   }
 
   func fetchEVChargingStations(latitude: Double, longitude: Double, distance: Double) async throws -> [POIResponse] {
-    guard let openChargeMapKey: String = Bundle.main.infoDictionary?["OPEN_CHARGE_MAP_KEY"] as? String else {
+    guard let openChargeMapKey: String = apiKey else {
       throw EVChargingAPIError.missingAPIKey
     }
     
-    let baseUrl = OpenChargeMapAPIConstants.baseURL
+    guard let baseUrl: String = baseUrl else {
+      throw EVChargingAPIError.invalidURL
+    }
+      
     let stringUrl = "\(baseUrl)poi?output=json&lat=\(latitude)&lon=\(longitude)&distance=\(distance)&maxresults=10&key=\(openChargeMapKey)"
     
     guard let url = URL(string: stringUrl) else {
@@ -31,7 +40,11 @@ class EVChargingStationsAPIService : EVChargingStationsRemoteDataSource {
     let request = URLRequest(url: url)
     
     do {
-      let (data, response) = try await session.data(for: request)
+      guard let networkClient: NetworkClient = networkClient else {
+        throw EVChargingAPIError.invalidNetworkClient
+      }
+      
+      let (data, response) = try await networkClient.data(for: request)
         
       guard let httpResponse = response as? HTTPURLResponse else {
         throw EVChargingAPIError.invalidResponse

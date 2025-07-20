@@ -28,7 +28,9 @@ final class DIContainer {
       let session = URLSession.shared
       let decoder = JSONDecoder()
       return EVChargingStationsAPIService(
-        session: session,
+        apiKey: Bundle.main.infoDictionary?["OPEN_CHARGE_MAP_KEY"] as? String ?? "",
+        baseUrl: OpenChargeMapAPIConstants.baseURL,
+        networkClient: session,
         decoder: decoder
       )
     }.inObjectScope(.container)

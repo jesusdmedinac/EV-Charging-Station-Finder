@@ -14,6 +14,7 @@ enum EVChargingAPIError: Error, LocalizedError {
   case httpError(Int)
   case decodingError(Error)
   case networkError(Error)
+  case invalidNetworkClient
     
   var errorDescription: String? {
     switch self {
@@ -29,6 +30,8 @@ enum EVChargingAPIError: Error, LocalizedError {
       return "Failed to decode response: \(error.localizedDescription)"
     case .networkError(let error):
       return "Network error occurred: \(error.localizedDescription)"
+    case .invalidNetworkClient:
+      return "Invalid NetworkClient instance"
     }
   }
 }
