@@ -16,13 +16,13 @@ import Foundation
 struct Country : Codable {
 	let iSOCode : String?
 	let continentCode : String?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
 		case iSOCode = "ISOCode"
 		case continentCode = "ContinentCode"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
 
@@ -30,7 +30,19 @@ struct Country : Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		iSOCode = try container.decodeIfPresent(String.self, forKey: .iSOCode)
 		continentCode = try container.decodeIfPresent(String.self, forKey: .continentCode)
-		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+  init(
+    iSOCode: String? = nil,
+    continentCode: String? = nil,
+    id: Int? = nil,
+    title: String? = nil
+  ) {
+    self.iSOCode = iSOCode
+    self.continentCode = continentCode
+    self.id = id
+    self.title = title
+  }
 }

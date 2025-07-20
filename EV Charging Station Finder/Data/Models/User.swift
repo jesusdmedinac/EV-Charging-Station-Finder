@@ -25,4 +25,14 @@ struct User: Codable {
     username = try container.decodeIfPresent(String.self, forKey: .username)
     profileImageUrl = try container.decodeIfPresent(String.self, forKey: .profileImageUrl)
   }
+  
+  init(
+    id: Int? = nil,
+    username: String? = nil,
+    profileImageUrl: String? = nil
+  ) {
+    self.id = id
+    self.username = username
+    self.profileImageUrl = profileImageUrl
+  }
 }

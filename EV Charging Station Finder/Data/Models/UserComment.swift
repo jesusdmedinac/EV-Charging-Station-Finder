@@ -50,4 +50,28 @@ struct UserComment: Codable {
     dateCreated = try container.decodeIfPresent(String.self, forKey: .dateCreated)
     user = try container.decodeIfPresent(User.self, forKey: .user)
   }
+  
+  init(
+    id: Int? = nil,
+    chargePointId: Int? = nil,
+    commentTypeId: Int? = nil,
+    commentType: String? = nil,
+    userName: String? = nil,
+    comment: String? = nil,
+    rating: Int? = nil,
+    relatedUrl: String? = nil,
+    dateCreated: String? = nil,
+    user: User? = nil
+  ) {
+    self.id = id
+    self.chargePointId = chargePointId
+    self.commentTypeId = commentTypeId
+    self.commentType = commentType
+    self.userName = userName
+    self.comment = comment
+    self.rating = rating
+    self.relatedUrl = relatedUrl
+    self.dateCreated = dateCreated
+    self.user = user
+  }
 }

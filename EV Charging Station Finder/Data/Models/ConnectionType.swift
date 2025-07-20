@@ -36,5 +36,18 @@ struct ConnectionType: Codable {
     id = try container.decodeIfPresent(Int.self, forKey: .id)
     title = try container.decodeIfPresent(String.self, forKey: .title)
   }
-
+    
+    init(
+        formalName: String? = nil,
+        isDiscontinued: Bool? = nil,
+        isObsolete: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.formalName = formalName
+        self.isDiscontinued = isDiscontinued
+        self.isObsolete = isObsolete
+        self.id = id
+        self.title = title
+    }
 }

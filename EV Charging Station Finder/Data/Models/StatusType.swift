@@ -16,13 +16,13 @@ import Foundation
 struct StatusType : Codable {
 	let isOperational : Bool?
 	let isUserSelectable : Bool?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
 		case isOperational = "IsOperational"
 		case isUserSelectable = "IsUserSelectable"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
 
@@ -30,7 +30,19 @@ struct StatusType : Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		isOperational = try container.decodeIfPresent(Bool.self, forKey: .isOperational)
 		isUserSelectable = try container.decodeIfPresent(Bool.self, forKey: .isUserSelectable)
-		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        isOperational: Bool? = nil,
+        isUserSelectable: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.isOperational = isOperational
+        self.isUserSelectable = isUserSelectable
+        self.id = id
+        self.title = title
+    }
 }

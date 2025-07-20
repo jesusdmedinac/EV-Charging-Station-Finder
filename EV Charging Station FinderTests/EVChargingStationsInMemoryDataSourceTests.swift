@@ -10,7 +10,7 @@ import Testing
 
 @Suite("EVChargingStationsInMemoryDataSource Tests")
 struct EVChargingStationsInMemoryDataSourceTests {
-    
+  
   private var evChargingStationsInMemoryDataSource: EVChargingStationsInMemoryDataSource
 
   init() {

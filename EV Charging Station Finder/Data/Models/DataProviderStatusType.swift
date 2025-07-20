@@ -30,4 +30,14 @@ struct DataProviderStatusType : Codable {
 		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        isProviderEnabled: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.isProviderEnabled = isProviderEnabled
+        self.id = id
+        self.title = title
+    }
 }

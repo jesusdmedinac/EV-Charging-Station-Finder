@@ -14,7 +14,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 
 struct AddressInfo : Codable {
-	let iD : Int?
+	let id : Int?
 	let title : String?
 	let addressLine1 : String?
 	let addressLine2 : String?
@@ -35,7 +35,7 @@ struct AddressInfo : Codable {
 
 	enum CodingKeys: String, CodingKey {
 
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 		case addressLine1 = "AddressLine1"
 		case addressLine2 = "AddressLine2"
@@ -57,7 +57,7 @@ struct AddressInfo : Codable {
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 		addressLine1 = try container.decodeIfPresent(String.self, forKey: .addressLine1)
 		addressLine2 = try container.decodeIfPresent(String.self, forKey: .addressLine2)
@@ -76,5 +76,44 @@ struct AddressInfo : Codable {
 		distance = try container.decodeIfPresent(Double.self, forKey: .distance)
 		distanceUnit = try container.decodeIfPresent(Int.self, forKey: .distanceUnit)
 	}
-
+    
+    init(
+        id: Int? = nil,
+        title: String? = nil,
+        addressLine1: String? = nil,
+        addressLine2: String? = nil,
+        town: String? = nil,
+        stateOrProvince: String? = nil,
+        postcode: String? = nil,
+        countryID: Int? = nil,
+        country: Country? = nil,
+        latitude: Double? = nil,
+        longitude: Double? = nil,
+        contactTelephone1: String? = nil,
+        contactTelephone2: String? = nil,
+        contactEmail: String? = nil,
+        accessComments: String? = nil,
+        relatedURL: String? = nil,
+        distance: Double? = nil,
+        distanceUnit: Int? = nil
+    ) {
+        self.id = id
+        self.title = title
+        self.addressLine1 = addressLine1
+        self.addressLine2 = addressLine2
+        self.town = town
+        self.stateOrProvince = stateOrProvince
+        self.postcode = postcode
+        self.countryID = countryID
+        self.country = country
+        self.latitude = latitude
+        self.longitude = longitude
+        self.contactTelephone1 = contactTelephone1
+        self.contactTelephone2 = contactTelephone2
+        self.contactEmail = contactEmail
+        self.accessComments = accessComments
+        self.relatedURL = relatedURL
+        self.distance = distance
+        self.distanceUnit = distanceUnit
+    }
 }

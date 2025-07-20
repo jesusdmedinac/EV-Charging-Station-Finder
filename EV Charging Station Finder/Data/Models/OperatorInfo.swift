@@ -24,7 +24,7 @@ struct OperatorInfo : Codable {
 	let contactEmail : String?
 	let faultReportEmail : String?
 	let isRestrictedEdit : Bool?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
@@ -38,7 +38,7 @@ struct OperatorInfo : Codable {
 		case contactEmail = "ContactEmail"
 		case faultReportEmail = "FaultReportEmail"
 		case isRestrictedEdit = "IsRestrictedEdit"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
 
@@ -54,7 +54,35 @@ struct OperatorInfo : Codable {
 		contactEmail = try container.decodeIfPresent(String.self, forKey: .contactEmail)
 		faultReportEmail = try container.decodeIfPresent(String.self, forKey: .faultReportEmail)
 		isRestrictedEdit = try container.decodeIfPresent(Bool.self, forKey: .isRestrictedEdit)
-		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        websiteURL: String? = nil,
+        comments: String? = nil,
+        phonePrimaryContact: String? = nil,
+        phoneSecondaryContact: String? = nil,
+        isPrivateIndividual: Bool? = nil,
+        addressInfo: String? = nil,
+        bookingURL: String? = nil,
+        contactEmail: String? = nil,
+        faultReportEmail: String? = nil,
+        isRestrictedEdit: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.websiteURL = websiteURL
+        self.comments = comments
+        self.phonePrimaryContact = phonePrimaryContact
+        self.phoneSecondaryContact = phoneSecondaryContact
+        self.isPrivateIndividual = isPrivateIndividual
+        self.addressInfo = addressInfo
+        self.bookingURL = bookingURL
+        self.contactEmail = contactEmail
+        self.faultReportEmail = faultReportEmail
+        self.isRestrictedEdit = isRestrictedEdit
+        self.id = id
+        self.title = title
+    }
 }

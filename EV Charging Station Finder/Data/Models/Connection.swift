@@ -66,4 +66,38 @@ struct Connection: Codable {
     level = try container.decodeIfPresent(Level.self, forKey: .level)
     currentType = try container.decodeIfPresent(CurrentType.self, forKey: .currentType)
   }
+    
+    init(
+        id: Int? = nil,
+        connectionTypeID: Int? = nil,
+        connectionType: ConnectionType? = nil,
+        reference: String? = nil,
+        statusTypeID: Int? = nil,
+        statusType: StatusType? = nil,
+        levelID: Int? = nil,
+        level: Level? = nil,
+        amps: Int? = nil,
+        voltage: Int? = nil,
+        powerKW: Double? = nil,
+        currentTypeID: Int? = nil,
+        currentType: CurrentType? = nil,
+        quantity: Int? = nil,
+        comments: String? = nil
+    ) {
+        self.id = id
+        self.connectionTypeID = connectionTypeID
+        self.connectionType = connectionType
+        self.reference = reference
+        self.statusTypeID = statusTypeID
+        self.statusType = statusType
+        self.levelID = levelID
+        self.level = level
+        self.amps = amps
+        self.voltage = voltage
+        self.powerKW = powerKW
+        self.currentTypeID = currentTypeID
+        self.currentType = currentType
+        self.quantity = quantity
+        self.comments = comments
+    }
 }

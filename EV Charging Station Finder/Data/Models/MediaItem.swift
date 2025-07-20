@@ -53,4 +53,30 @@ struct MediaItem: Codable {
     url = try container.decodeIfPresent(String.self, forKey: .url)
     thumbnailUrl = try container.decodeIfPresent(String.self, forKey: .thumbnailUrl)
   }
+    
+  init(
+    id: Int? = nil,
+    chargePointId: Int? = nil,
+    userId: Int? = nil,
+    title: String? = nil,
+    description: String? = nil,
+    isEnabled: Bool? = nil,
+    isVideo: Bool? = nil,
+    isFeaturedItem: Bool? = nil,
+    isExternalResource: Bool? = nil,
+    url: String? = nil,
+    thumbnailUrl: String? = nil
+  ) {
+    self.id = id
+    self.chargePointId = chargePointId
+    self.userId = userId
+    self.title = title
+    self.description = description
+    self.isEnabled = isEnabled
+    self.isVideo = isVideo
+    self.isFeaturedItem = isFeaturedItem
+    self.isExternalResource = isExternalResource
+    self.url = url
+    self.thumbnailUrl = thumbnailUrl
+  }
 }

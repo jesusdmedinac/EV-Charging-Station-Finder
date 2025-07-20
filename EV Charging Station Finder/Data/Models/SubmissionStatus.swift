@@ -30,4 +30,14 @@ struct SubmissionStatus : Codable {
 		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        isLive: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.isLive = isLive
+        self.id = id
+        self.title = title
+    }
 }

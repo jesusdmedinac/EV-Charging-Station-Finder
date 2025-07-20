@@ -15,19 +15,29 @@ import Foundation
 
 struct CurrentType : Codable {
 	let description : String?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
 		case description = "Description"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
-
+    
+    init(
+        id: Int? = nil,
+        title: String? = nil,
+        description: String? = nil
+    ) {
+        self.id = id
+        self.title = title
+        self.description = description
+    }
+    
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		description = try container.decodeIfPresent(String.self, forKey: .description)
-		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
 }

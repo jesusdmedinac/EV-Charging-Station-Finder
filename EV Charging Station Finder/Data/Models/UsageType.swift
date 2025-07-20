@@ -36,4 +36,18 @@ struct UsageType : Codable {
 		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        isPayAtLocation: Bool? = nil,
+        isMembershipRequired: Bool? = nil,
+        isAccessKeyRequired: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.isPayAtLocation = isPayAtLocation
+        self.isMembershipRequired = isMembershipRequired
+        self.isAccessKeyRequired = isAccessKeyRequired
+        self.id = id
+        self.title = title
+    }
 }

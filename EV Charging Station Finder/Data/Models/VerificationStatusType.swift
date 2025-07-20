@@ -26,9 +26,13 @@ struct VerificationStatusType: Codable {
     isVerified = try container.decodeIfPresent(Bool.self, forKey: .isVerified)
   }
   
-  init() {
-    self.id = nil
-    self.title = nil
-    self.isVerified = nil
+  init(
+    id: Int? = nil,
+    title: String? = nil,
+    isVerified: Bool? = nil
+  ) {
+    self.id = id
+    self.title = title
+    self.isVerified = isVerified
   }
 }

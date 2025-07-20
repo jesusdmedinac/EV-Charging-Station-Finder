@@ -33,4 +33,16 @@ struct Level : Codable {
 		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        comments: String? = nil,
+        isFastChargeCapable: Bool? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.comments = comments
+        self.isFastChargeCapable = isFastChargeCapable
+        self.id = id
+        self.title = title
+    }
 }

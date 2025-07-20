@@ -22,7 +22,7 @@ struct DataProvider : Codable {
 	let isApprovedImport : Bool?
 	let license : String?
 	let dateLastImported : String?
-	let iD : Int?
+	let id : Int?
 	let title : String?
 
 	enum CodingKeys: String, CodingKey {
@@ -34,7 +34,7 @@ struct DataProvider : Codable {
 		case isApprovedImport = "IsApprovedImport"
 		case license = "License"
 		case dateLastImported = "DateLastImported"
-		case iD = "ID"
+		case id = "ID"
 		case title = "Title"
 	}
 
@@ -48,7 +48,31 @@ struct DataProvider : Codable {
 		isApprovedImport = try container.decodeIfPresent(Bool.self, forKey: .isApprovedImport)
 		license = try container.decodeIfPresent(String.self, forKey: .license)
 		dateLastImported = try container.decodeIfPresent(String.self, forKey: .dateLastImported)
-		iD = try container.decodeIfPresent(Int.self, forKey: .iD)
+		id = try container.decodeIfPresent(Int.self, forKey: .id)
 		title = try container.decodeIfPresent(String.self, forKey: .title)
 	}
+    
+    init(
+        websiteURL: String? = nil,
+        comments: String? = nil,
+        dataProviderStatusType: DataProviderStatusType? = nil,
+        isRestrictedEdit: Bool? = nil,
+        isOpenDataLicensed: Bool? = nil,
+        isApprovedImport: Bool? = nil,
+        license: String? = nil,
+        dateLastImported: String? = nil,
+        id: Int? = nil,
+        title: String? = nil
+    ) {
+        self.websiteURL = websiteURL
+        self.comments = comments
+        self.dataProviderStatusType = dataProviderStatusType
+        self.isRestrictedEdit = isRestrictedEdit
+        self.isOpenDataLicensed = isOpenDataLicensed
+        self.isApprovedImport = isApprovedImport
+        self.license = license
+        self.dateLastImported = dateLastImported
+        self.id = id
+        self.title = title
+    }
 }
