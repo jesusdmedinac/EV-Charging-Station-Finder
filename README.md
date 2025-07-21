@@ -4,6 +4,18 @@
 
 A simple list-detail app that displays a list of EV charging stations from OpenChargeMap API and allows the user to select one to view its details.
 
+## Screenshots and videos
+
+https://github.com/user-attachments/assets/c666c76c-639d-4688-8606-67c748490246
+
+<img width="270" alt="Simulator Screenshot - iPhone 16 - 2025-07-20 at 14 11 35" src="https://github.com/user-attachments/assets/a25c8d1a-a78a-401b-8be0-02a9178c84fd" />
+
+<img width="270" alt="Simulator Screenshot - iPhone 16 - 2025-07-20 at 14 11 42" src="https://github.com/user-attachments/assets/9d0b29b3-df3f-4997-9ad1-3f3846dd4845" />
+
+## [DECISION_LOG.md](DECISION_LOG.md)
+
+Read [DECISION_LOG.md](DECISION_LOG.md) for a detailed explaination about how this app was created developed.
+
 ## Setup instructions
 
 The app is expecting a **Secrets.xcconfig** file to be present in the root directory of the project. This file should contain the following variables:
