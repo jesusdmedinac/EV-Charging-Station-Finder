@@ -16,7 +16,7 @@ enum DataError: Error, LocalizedError {
   case networkError(Error)
   case invalidNetworkClient
     
-  var errorDescription: String? {
+  var errorDescription: String {
     switch self {
     case .missingAPIKey:
       return "Open Charge Map API key is missing from Info.plist"

@@ -54,6 +54,20 @@ final class DIContainer {
         evChargingStationMapper: evChargingStationMapper
       )
     }.inObjectScope(.container)
+      
+    container.register(LocationDataSource.self) { _ in
+      return LocationDataSourceImpl()
+    }.inObjectScope(.container)
+      
+    container.register(LocationRepository.self) { resolver in
+      let locationDataSource = resolver.resolve(LocationDataSource.self)!
+      return LocationRepositoryImpl(locationDataSource: locationDataSource)
+    }.inObjectScope(.container)
+      
+    container.register(GetCurrentLocationUseCase.self) { resolver in
+      let locationRepository = resolver.resolve(LocationRepository.self)!
+      return GetCurrentLocationUseCaseImpl(locationRepository: locationRepository)
+    }.inObjectScope(.container)
 
     container.register(GetEVChargingStationsUseCase.self) { resolver in
       let repository = resolver.resolve(EVChargingStationsRepository.self)!
@@ -72,9 +86,11 @@ final class DIContainer {
     container.register(StationsListScreenViewModel.self) { resolver in
       let getEVChargingStationsUseCase = resolver.resolve(GetEVChargingStationsUseCase.self)!
       let uiEVChargingStationMapper = resolver.resolve(UIEVChargingStationMapper.self)!
+      let getCurrentLocationUseCase = resolver.resolve(GetCurrentLocationUseCase.self)!
       return StationsListScreenViewModel(
         getEVChargingStationsUseCase: getEVChargingStationsUseCase,
-        uiEVChargingStationMapper: uiEVChargingStationMapper
+        uiEVChargingStationMapper: uiEVChargingStationMapper,
+        getCurrentLocationUseCase: getCurrentLocationUseCase
       )
     }.inObjectScope(.container)
   }

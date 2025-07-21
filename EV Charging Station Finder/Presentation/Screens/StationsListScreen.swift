@@ -19,15 +19,31 @@ struct StationsListScreen: View {
   var body: some View {
     NavigationView {
       if viewModel.error != nil {
-        ZStack {
-          Text("Something went wrong... please pull to refresh to try again.")
+        HStack {
+          Spacer()
+          VStack {
+            Spacer()
+            Text((viewModel.error ?? .unknown(NSError(domain: "Unknown error...", code: 1))).errorDescription)
+            Button("Refresh") {
+              Task {
+                await refreshData()
+              }
+            }
+            Spacer()
+          }
+          Spacer()
         }
       } else if viewModel.isLoading {
         ZStack {
           ProgressView()
         }
       } else {
-        ZStack {
+        VStack {
+          Button("Refresh") {
+            Task {
+              await refreshData()
+            }
+          }
           List(viewModel.stations) { station in
             StationRow(uiEVChargingStation: station)
           }
