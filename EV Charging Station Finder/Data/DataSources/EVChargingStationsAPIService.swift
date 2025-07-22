@@ -30,8 +30,8 @@ class EVChargingStationsAPIService : EVChargingStationsRemoteDataSource {
     guard let baseUrl: String = baseUrl else {
       throw DataError.invalidURL
     }
-      
-    let stringUrl = "\(baseUrl)poi?output=json&lat=\(latitude)&lon=\(longitude)&distance=\(distance)&maxresults=10&key=\(openChargeMapKey)"
+    
+    let stringUrl = "\(baseUrl)poi?output=json&latitude=\(latitude)&longitude=\(longitude)&distance=\(distance)&maxresults=10&key=\(openChargeMapKey)"
     
     guard let url = URL(string: stringUrl) else {
       throw DataError.invalidURL

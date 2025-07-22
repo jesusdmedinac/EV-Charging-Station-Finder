@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct StationsListScreen: View {
+  private let container = DIContainer.shared
+  
   @StateObject var viewModel: StationsListScreenViewModel
 
   var body: some View {
@@ -38,7 +40,7 @@ struct StationsListScreen: View {
           ProgressView()
         } else {
           List(viewModel.stations) { station in
-            NavigationLink(destination: StationDetailScreen(uiEVChargingStation: station)) {
+            NavigationLink(destination: StationDetailScreen(viewModel: container.resolve(StationDetailScreenViewModel.self), uiEVChargingStationId: station.id)) {
               StationRow(
                 uiEVChargingStation: station
               )

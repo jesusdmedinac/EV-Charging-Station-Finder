@@ -13,7 +13,9 @@ struct EVChargingStationFinderApp: App {
 
   var body: some Scene {
     WindowGroup {
-      StationsListScreen(viewModel: container.resolve(StationsListScreenViewModel.self))
+      StationsListScreen(
+        viewModel: container.resolve(StationsListScreenViewModel.self),
+      )
     }
   }
 }

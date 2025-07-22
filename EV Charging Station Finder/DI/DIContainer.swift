@@ -93,6 +93,15 @@ final class DIContainer {
         getCurrentLocationUseCase: getCurrentLocationUseCase
       )
     }.inObjectScope(.container)
+    
+    container.register(StationDetailScreenViewModel.self) { resolver in
+      let getEVChargingStationsByIdUseCase = resolver.resolve(GetEVChargingStationsByIdUseCase.self)!
+      let uiEVChargingStationMapper = resolver.resolve(UIEVChargingStationMapper.self)!
+      return StationDetailScreenViewModel(
+        getEVChargingStationsByIdUseCase: getEVChargingStationsByIdUseCase,
+        uiEVChargingStationMapper: uiEVChargingStationMapper
+      )
+    }.inObjectScope(.container)
   }
     
   func resolve<T>(_ type: T.Type) -> T {

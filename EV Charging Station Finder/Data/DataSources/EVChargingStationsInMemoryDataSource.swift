@@ -21,7 +21,7 @@ class EVChargingStationsInMemoryDataSource : EVChargingStationsLocalDataSource {
   }
   
   func getEVChargingStation(id: String) -> DomainEVChargingStation? {
-    return evChargingStations.first(where: { $0.id == id })
+    return evChargingStations.first(where: { $0.name == id })
   }
   
   func saveEVChargingStation(_ item: DomainEVChargingStation) {
