@@ -6,121 +6,62 @@
 //
 
 import SwiftUI
-import CoreLocation
 import MapKit
 
 struct StationsListScreen: View {
-  private static let container = DIContainer.shared
+  @StateObject var viewModel: StationsListScreenViewModel
 
-  @StateObject private var viewModel: StationsListScreenViewModel = {
-    return container.resolve(StationsListScreenViewModel.self)
-  }()
-    
   var body: some View {
     NavigationView {
-      if viewModel.error != nil {
-        HStack {
-          Spacer()
+      ZStack {
+        if let error = viewModel.error {
           VStack {
-            Spacer()
-            Text((viewModel.error ?? .unknown(NSError(domain: "Unknown error...", code: 1))).errorDescription)
-            Button("Refresh") {
+            Text(error.errorDescription ?? "An unknown error occurred.")
+            Button("Retry") {
               Task {
-                await refreshData()
+                await viewModel.fetchStations()
               }
             }
-            Spacer()
           }
-          Spacer()
-        }
-      } else if viewModel.isLoading {
-        ZStack {
+        } else if viewModel.isLoading {
           ProgressView()
-        }
-      } else {
-        VStack {
-          Button("Refresh") {
-            Task {
-              await refreshData()
+        } else {
+          List(viewModel.stations) { station in
+            NavigationLink(destination: StationDetailScreen(uiEVChargingStation: station)) {
+              StationRow(
+                uiEVChargingStation: station
+              )
             }
           }
-          List(viewModel.stations) { station in
-            StationRow(uiEVChargingStation: station)
-          }
+          .navigationTitle("EV Charging Stations")
         }
-        .navigationBarTitle("EV Charging Stations")
       }
     }
     .onAppear {
       Task {
-        await refreshData()
+        await viewModel.fetchStations()
       }
     }
   }
-    
-  private func refreshData() async {
-    do {
-      try await viewModel.fetchStations()
-    } catch {
-      print("\(error)")
-    }
-  }
-}
-
-#Preview {
-  StationsListScreen()
 }
 
 struct StationRow: View {
   let uiEVChargingStation: UIEVChargingStation
   
-  @State private var distanceInMiles: String? = ""
-  
   var body: some View {
-    NavigationLink(destination: StationDetailScreen(uiEVChargingStation: uiEVChargingStation)) {
-      HStack {
-        Image(systemName: "ev.charger")
-          .font(.system(size: 16))
-          .foregroundColor(.white)
-          .padding(8)
-          .background(Color.green)
-          .clipShape(Circle())
-        VStack(alignment: .leading) {
-          Text(uiEVChargingStation.name)
-            .font(.system(size: 14))
-          Text(uiEVChargingStation.address)
-            .font(.system(size: 12))
-        }
-        Spacer()
-        HStack {
-          Image(systemName: "location")
-          Text(distanceInMiles ?? "")
-        }
+    HStack {
+      Image(systemName: "ev.charger")
+        .font(.system(size: 16))
         .foregroundColor(.white)
-        .padding(4)
-        .background(Color.blue)
-        .clipShape(RoundedRectangle(cornerRadius: CGFloat(8)))
-      }
-    }
-    .onAppear {
-      Task {
-        await fetchLocation()
+        .padding(8)
+        .background(Color.green)
+        .clipShape(Circle())
+      VStack(alignment: .leading) {
+        Text(uiEVChargingStation.name)
+          .font(.system(size: 14))
+        Text(uiEVChargingStation.address)
+          .font(.system(size: 12))
       }
     }
   }
-  
-  private func fetchLocation() async {
-    guard let location = uiEVChargingStation.location else { return }
-    let latitude: Double = Double(location.latitude ?? 0)
-    let longitude: Double = Double(location.longitude ?? 0)
-    let stationLocation = CLLocation(latitude: latitude, longitude: longitude)
-    let userLocation = CLLocation(latitude: 34.0286238, longitude: -84.2173394)
-    let distance = userLocation.distance(from: stationLocation)
-    distanceInMiles = "\(String(describing: Int(round(distance * MathConstants.milesFactor)))) mi"
-  }
-}
-
-#Preview {
-  let uiEVChargingStation = UIEVChargingStation(name: "name", address: "address", location: UILatLong(latitude: 0.0, longitude: 0.0), connectorTypes: [], accessComments: "accessComments")
-  StationRow(uiEVChargingStation: uiEVChargingStation)
 }

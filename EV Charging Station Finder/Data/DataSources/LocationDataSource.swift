@@ -8,12 +8,11 @@
 import CoreLocation
 
 protocol LocationDataSource {
-    func requestLocationAuthorization()
-    func startUpdatingLocation() -> AsyncStream<Result<CLLocationCoordinate2D, Error>>
-    func stopUpdatingLocation()
+  func requestLocationAuthorization() async -> Bool
+  func getCurrentLocation() async -> Result<CLLocationCoordinate2D, Error>
 }
 
 enum LocationError: Error {
-    case authorizationDenied
-    case unknown
+  case authorizationDenied
+  case unknown
 }

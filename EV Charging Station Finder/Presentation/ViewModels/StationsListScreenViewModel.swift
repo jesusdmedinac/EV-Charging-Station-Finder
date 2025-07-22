@@ -29,37 +29,23 @@ class StationsListScreenViewModel: ObservableObject {
     self.getCurrentLocationUseCase = getCurrentLocationUseCase
   }
   
-  private func setupLocationUpdates() async throws -> UILatLong {
-    getCurrentLocationUseCase.requestAuthorization()
-    
-    for await result in getCurrentLocationUseCase.execute() {
-      switch result {
-      case .success(let domainLatLong):
-        self.error = nil
-        return UILatLong(latitude: domainLatLong.latitude, longitude: domainLatLong.longitude)
-      case .failure(_):
-        throw PresentationError.locationNotAvailable
-      }
-    }
-    throw PresentationError.unknown(NSError(domain: "Unable to get current location", code: 1))
-  }
-  
-  func fetchStations() async throws {
+  func fetchStations() async {
     self.isLoading = true
     
     do {
-      let location = try await setupLocationUpdates()
-      guard let latitude = location.latitude,
-      let longitude = location.longitude else {
-        throw PresentationError.locationNotAvailable
+      let hasPermission = await getCurrentLocationUseCase.requestAuthorization()
+      if hasPermission {
+        let location = try await getCurrentLocationUseCase.execute()
+        let stations = try await getEVChargingStationsUseCase.execute(
+          latitude: location.latitude,
+          longitude: location.longitude,
+          distance: defaultDistance
+        )
+        self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
+        self.error = nil
+      } else {
+        self.error = .locationNotAvailable
       }
-      let stations = try await getEVChargingStationsUseCase.execute(
-        latitude: latitude,
-        longitude: longitude,
-        distance: defaultDistance
-      )
-      self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
-      self.error = nil
     } catch let error as PresentationError {
       self.error = error
     } catch {

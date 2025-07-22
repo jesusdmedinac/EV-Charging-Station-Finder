@@ -1,6 +1,6 @@
 import Foundation
 
 protocol GetCurrentLocationUseCase {
-    func execute() -> AsyncStream<Result<DomainLatLong, DomainError>>
-    func requestAuthorization()
+  func execute() async throws -> DomainLatLong
+  func requestAuthorization() async -> Bool
 }

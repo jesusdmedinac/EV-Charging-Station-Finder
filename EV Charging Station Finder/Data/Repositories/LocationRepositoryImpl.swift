@@ -8,34 +8,26 @@ class LocationRepositoryImpl: LocationRepository {
     self.locationDataSource = locationDataSource
   }
 
-  func getCurrentLocation() -> AsyncStream<Result<DomainLatLong, DomainError>> {
-    return AsyncStream { continuation in
-      Task {
-        for await result in locationDataSource.startUpdatingLocation() {
-          switch result {
-          case .success(let coordinate):
-            let domainLatLong = DomainLatLong(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            continuation.yield(.success(domainLatLong))
-          case .failure(let error):
-            if let locationError = error as? LocationError {
-                switch locationError {
-                case .authorizationDenied:
-                  continuation.yield(.failure(.locationAccessDenied))
-                case .unknown:
-                  continuation.yield(.failure(.unknown(error)))
-                }
-            } else {
-              continuation.yield(.failure(.unknown(error)))
-            }
-            continuation.finish()
-            return
-          }
+  func getCurrentLocation() async throws -> DomainLatLong {
+    let result = await locationDataSource.getCurrentLocation()
+    switch result {
+    case .success(let coordinate):
+      return DomainLatLong(latitude: coordinate.latitude, longitude: coordinate.longitude)
+    case .failure(let error):
+      if let locationError = error as? LocationError {
+        switch locationError {
+        case .authorizationDenied:
+          throw DomainError.locationAccessDenied
+        case .unknown:
+          throw DomainError.unknown(error)
         }
+      } else {
+        throw DomainError.unknown(error)
       }
     }
   }
   
-  func requestAuthorization() {
-    locationDataSource.requestLocationAuthorization()
+  func requestAuthorization() async -> Bool {
+    return await locationDataSource.requestLocationAuthorization()
   }
 }

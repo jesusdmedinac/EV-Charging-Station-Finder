@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct EVChargingStationFinderApp: App {  
+struct EVChargingStationFinderApp: App {
+  private let container = DIContainer.shared
+
   var body: some Scene {
     WindowGroup {
-      StationsListScreen()
+      StationsListScreen(viewModel: container.resolve(StationsListScreenViewModel.self))
     }
   }
 }
+

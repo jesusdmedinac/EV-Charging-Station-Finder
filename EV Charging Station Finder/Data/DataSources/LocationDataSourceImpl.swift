@@ -10,7 +10,8 @@ import CoreLocation
 
 class LocationDataSourceImpl: NSObject, LocationDataSource, CLLocationManagerDelegate {
   private let locationManager = CLLocationManager()
-  private var continuation: AsyncStream<Result<CLLocationCoordinate2D, Error>>.Continuation?
+  private var locationContinuation: CheckedContinuation<Result<CLLocationCoordinate2D, Error>, Never>?
+  private var authorizationContinuation: CheckedContinuation<Bool, Never>?
 
   override init() {
     super.init()
@@ -18,43 +19,40 @@ class LocationDataSourceImpl: NSObject, LocationDataSource, CLLocationManagerDel
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
   }
 
-  func requestLocationAuthorization() {
-    locationManager.requestWhenInUseAuthorization()
+  func requestLocationAuthorization() async -> Bool {
+    return await withCheckedContinuation { continuation in
+      self.authorizationContinuation = continuation
+      locationManager.requestWhenInUseAuthorization()
+    }
   }
 
-  func startUpdatingLocation() -> AsyncStream<Result<CLLocationCoordinate2D, Error>> {
-    return AsyncStream {
-      self.continuation = $0
+  func getCurrentLocation() async -> Result<CLLocationCoordinate2D, Error> {
+    return await withCheckedContinuation { continuation in
+      self.locationContinuation = continuation
       locationManager.startUpdatingLocation()
     }
   }
 
-  func stopUpdatingLocation() {
-    locationManager.stopUpdatingLocation()
-    continuation?.finish()
-  }
-
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }
-    continuation?.yield(.success(location.coordinate))
+    locationContinuation?.resume(returning: .success(location.coordinate))
+    locationManager.stopUpdatingLocation()
   }
 
   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-    continuation?.yield(.failure(error))
-    continuation?.finish()
+    locationContinuation?.resume(returning: .failure(error))
   }
 
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     switch manager.authorizationStatus {
     case .authorizedWhenInUse, .authorizedAlways:
-      break
+      authorizationContinuation?.resume(returning: true)
     case .denied, .restricted:
-      continuation?.yield(.failure(LocationError.authorizationDenied))
-      continuation?.finish()
+      authorizationContinuation?.resume(returning: false)
     case .notDetermined:
       break
     @unknown default:
-      break
+      authorizationContinuation?.resume(returning: false)
     }
   }
 }
