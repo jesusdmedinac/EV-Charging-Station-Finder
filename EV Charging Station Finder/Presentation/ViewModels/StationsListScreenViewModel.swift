@@ -33,19 +33,14 @@ class StationsListScreenViewModel: ObservableObject {
     self.isLoading = true
     
     do {
-      let hasPermission = await getCurrentLocationUseCase.requestAuthorization()
-      if hasPermission {
-        let location = try await getCurrentLocationUseCase.execute()
-        let stations = try await getEVChargingStationsUseCase.execute(
-          latitude: location.latitude,
-          longitude: location.longitude,
-          distance: defaultDistance
-        )
-        self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
-        self.error = nil
-      } else {
-        self.error = .locationNotAvailable
-      }
+      let location = try await getCurrentLocationUseCase.execute()
+      let stations = try await getEVChargingStationsUseCase.execute(
+        latitude: location.latitude,
+        longitude: location.longitude,
+        distance: defaultDistance
+      )
+      self.stations = stations.compactMap { uiEVChargingStationMapper.map($0) }
+      self.error = nil
     } catch let error as PresentationError {
       self.error = error
     } catch {

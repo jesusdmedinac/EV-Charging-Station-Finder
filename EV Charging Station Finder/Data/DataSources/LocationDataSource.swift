@@ -8,8 +8,9 @@
 import CoreLocation
 
 protocol LocationDataSource {
-  func requestLocationAuthorization() async -> Bool
-  func getCurrentLocation() async -> Result<CLLocationCoordinate2D, Error>
+  func hasPermissions() async throws -> Result<Bool, Error>
+  func requestPermissions() async throws -> Result<Bool, Error>
+  func getCurrentLocation() async throws -> Result<CLLocation, Error>
 }
 
 enum LocationError: Error {
