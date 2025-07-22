@@ -87,6 +87,18 @@ struct StationRow: View {
         Text(uiEVChargingStation.address)
           .font(.system(size: 12))
       }
+      Spacer()
+      HStack {
+        Image(systemName: "location.fill")
+          .font(.system(size: 12))
+          .foregroundColor(.white)
+        Text("\(String(format: "%.2f", uiEVChargingStation.distance ?? 0)) mi")
+          .font(.system(size: 12))
+          .foregroundColor(.white)
+      }
+      .padding(4)
+      .background(Color.blue)
+      .clipShape(RoundedRectangle(cornerRadius: 4))
     }
   }
 }
