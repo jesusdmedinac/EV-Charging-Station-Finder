@@ -16,7 +16,18 @@ struct StationsListScreen: View {
       ZStack {
         if let error = viewModel.error {
           VStack {
-            Text(error.errorDescription ?? "An unknown error occurred.")
+            if case let PresentationError.domain(domainError) = error {
+              switch domainError {
+              case .locationAccessDenied:
+                Text(error.errorDescription)
+                Button("Open Settings") {
+                  viewModel.openSettings()
+                }
+                Text("Once permissions are approved, tap Retry.")
+              default:
+                Text(error.errorDescription)
+              }
+            }
             Button("Retry") {
               Task {
                 await viewModel.fetchStations()
@@ -41,6 +52,18 @@ struct StationsListScreen: View {
       Task {
         await viewModel.fetchStations()
       }
+    }
+    .alert(isPresented: $viewModel.showLocationDeniedAlert) {
+      Alert(
+        title: Text("Location Access Required"),
+        message: Text("This app needs access to your location to find nearby charging stations. Please enable location access in Settings."),
+        primaryButton: .default(Text("Settings")) {
+          if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsURL)
+          }
+        },
+        secondaryButton: .cancel()
+      )
     }
   }
 }

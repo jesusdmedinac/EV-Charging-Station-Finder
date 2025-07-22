@@ -20,6 +20,7 @@ class StationsListScreenViewModel: ObservableObject {
   @Published var stations: [UIEVChargingStation] = []
   @Published var isLoading: Bool = false
   @Published var error: PresentationError? = nil
+  @Published var showLocationDeniedAlert = false
   
   init(getEVChargingStationsUseCase: GetEVChargingStationsUseCase,
        uiEVChargingStationMapper: UIEVChargingStationMapper,
@@ -27,6 +28,10 @@ class StationsListScreenViewModel: ObservableObject {
     self.getEVChargingStationsUseCase = getEVChargingStationsUseCase
     self.uiEVChargingStationMapper = uiEVChargingStationMapper
     self.getCurrentLocationUseCase = getCurrentLocationUseCase
+  }
+  
+  func openSettings() {
+    self.showLocationDeniedAlert = true
   }
   
   func fetchStations() async {
@@ -43,6 +48,8 @@ class StationsListScreenViewModel: ObservableObject {
       self.error = nil
     } catch let error as PresentationError {
       self.error = error
+    } catch let error as DomainError {
+      self.error = .domain(error)
     } catch {
       self.error = .unknown(error)
     }

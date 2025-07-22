@@ -18,10 +18,12 @@ class GetCurrentLocationUseCaseImpl: GetCurrentLocationUseCase {
       }
       let location = try await locationRepository.getCurrentLocation()
       return location
+    } catch let error as DomainError {
+      throw PresentationError.domain(error)
     } catch let error as DataError {
-      throw DomainError.data(error)
+      throw PresentationError.domain(DomainError.data(error))
     } catch {
-      throw DomainError.unknown(error)
+      throw PresentationError.unknown(error)
     }
   }
 }

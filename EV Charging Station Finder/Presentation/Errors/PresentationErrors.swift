@@ -19,7 +19,7 @@ enum PresentationError: Error, LocalizedError {
     case .locationNotAvailable:
       return "Location not available"
     case .unknown(let error):
-      return "An unknown error occurred: \(error)"
+      return "An unknown PresentationError occurred: \(error)"
     }
   }
 }

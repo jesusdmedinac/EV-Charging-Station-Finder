@@ -22,7 +22,7 @@ enum DomainError: Error, LocalizedError {
     case .locationAccessDenied:
       return "Location access was denied by the user."
     case .unknown(let error):
-      return "An unknown error occurred: \(error)"
+      return "An unknown DomainError occurred: \(error)"
     }
   }
 }
